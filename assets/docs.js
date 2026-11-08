@@ -511,19 +511,7 @@ window.DOCS = {
   "title": "인스타그램 돋보기 상품소개서",
   "n": 7,
   "w": 3485,
-  "h": 1961,
-  "motion": {
-   "4": [
-    {
-     "x": 49.48,
-     "y": 53.41,
-     "w": 14.68,
-     "h": 32.73,
-     "src": "motion/instagram-explore-p4-01.mp4",
-     "poster": "motion/instagram-explore-p4-01.jpg"
-    }
-   ]
-  }
+  "h": 1961
  },
  "youtube-shorts": {
   "title": "유튜브 쇼츠 채널 상품소개서",
