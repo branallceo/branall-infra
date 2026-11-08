@@ -1,4 +1,4 @@
-/* 소개서 목록과 링크 위치 (x,y,w,h 는 페이지 기준 % / page: 같은 문서 내 이동 / doc: 다른 소개서 열기) */
+/* 소개서 목록, 링크 위치, 움직이는 요소(motion: GIF/영상) 위치. x,y,w,h 는 페이지 기준 % */
 window.DOCS = {
  "main": {
   "title": "브랜올 매체 인프라",
@@ -493,19 +493,95 @@ window.DOCS = {
   "title": "인스타그램 파워페이지 상품소개서",
   "n": 7,
   "w": 3485,
-  "h": 1961
+  "h": 1961,
+  "motion": {
+   "4": [
+    {
+     "x": 64.57,
+     "y": 21.75,
+     "w": 14.1,
+     "h": 31.3,
+     "src": "motion/instagram-powerpage-p4-01.mp4",
+     "poster": "motion/instagram-powerpage-p4-01.jpg"
+    }
+   ]
+  }
  },
  "instagram-explore": {
   "title": "인스타그램 돋보기 상품소개서",
   "n": 7,
   "w": 3485,
-  "h": 1961
+  "h": 1961,
+  "motion": {
+   "4": [
+    {
+     "x": 49.48,
+     "y": 53.41,
+     "w": 14.68,
+     "h": 32.73,
+     "src": "motion/instagram-explore-p4-01.mp4",
+     "poster": "motion/instagram-explore-p4-01.jpg"
+    }
+   ]
+  }
  },
  "youtube-shorts": {
   "title": "유튜브 쇼츠 채널 상품소개서",
   "n": 6,
   "w": 3492,
-  "h": 1966
+  "h": 1966,
+  "motion": {
+   "3": [
+    {
+     "x": 79.45,
+     "y": 19.87,
+     "w": 19.78,
+     "h": 57.52,
+     "src": "motion/youtube-shorts-p3-01.mp4",
+     "poster": "motion/youtube-shorts-p3-01.jpg"
+    },
+    {
+     "x": 40.5,
+     "y": 21.01,
+     "w": 18.63,
+     "h": 51.86,
+     "src": "motion/youtube-shorts-p3-02.mp4",
+     "poster": "motion/youtube-shorts-p3-02.jpg"
+    },
+    {
+     "x": 0.54,
+     "y": 21.15,
+     "w": 19.53,
+     "h": 56.81,
+     "src": "motion/youtube-shorts-p3-03.mp4",
+     "poster": "motion/youtube-shorts-p3-03.jpg"
+    },
+    {
+     "x": 59.78,
+     "y": 21.53,
+     "w": 19.18,
+     "h": 55.84,
+     "src": "motion/youtube-shorts-p3-04.mp4",
+     "poster": "motion/youtube-shorts-p3-04.jpg"
+    },
+    {
+     "x": 20.62,
+     "y": 21.17,
+     "w": 19.43,
+     "h": 56.64,
+     "src": "motion/youtube-shorts-p3-05.mp4",
+     "poster": "motion/youtube-shorts-p3-05.jpg"
+    },
+    {
+     "x": 79.39,
+     "y": 22.13,
+     "w": 19.93,
+     "h": 58.05,
+     "src": "motion/youtube-shorts-p3-06.mp4",
+     "poster": "motion/youtube-shorts-p3-06.jpg"
+    }
+   ]
+  }
  },
  "x-rt": {
   "title": "X(구 트위터) 대형채널 RT 상품소개서",
@@ -523,7 +599,173 @@ window.DOCS = {
   "title": "인플루언서 숏폼 캠페인",
   "n": 7,
   "w": 3492,
-  "h": 1966
+  "h": 1966,
+  "motion": {
+   "3": [
+    {
+     "x": 9.63,
+     "y": 11.15,
+     "w": 14.02,
+     "h": 40.63,
+     "src": "motion/influencer-shortform-p3-01.mp4",
+     "poster": "motion/influencer-shortform-p3-01.jpg"
+    },
+    {
+     "x": 43.25,
+     "y": 11.03,
+     "w": 14.09,
+     "h": 40.89,
+     "src": "motion/influencer-shortform-p3-02.mp4",
+     "poster": "motion/influencer-shortform-p3-02.jpg"
+    },
+    {
+     "x": 26.43,
+     "y": 11.08,
+     "w": 14.02,
+     "h": 40.89,
+     "src": "motion/influencer-shortform-p3-03.mp4",
+     "poster": "motion/influencer-shortform-p3-03.jpg"
+    },
+    {
+     "x": 59.95,
+     "y": 11,
+     "w": 14.17,
+     "h": 41.15,
+     "src": "motion/influencer-shortform-p3-04.mp4",
+     "poster": "motion/influencer-shortform-p3-04.jpg"
+    },
+    {
+     "x": 76.45,
+     "y": 11.12,
+     "w": 14.17,
+     "h": 41.15,
+     "src": "motion/influencer-shortform-p3-05.mp4",
+     "poster": "motion/influencer-shortform-p3-05.jpg"
+    },
+    {
+     "x": 9.67,
+     "y": 52.62,
+     "w": 14.02,
+     "h": 40.63,
+     "src": "motion/influencer-shortform-p3-06.mp4",
+     "poster": "motion/influencer-shortform-p3-06.jpg"
+    },
+    {
+     "x": 43.17,
+     "y": 52.5,
+     "w": 14.17,
+     "h": 41.02,
+     "src": "motion/influencer-shortform-p3-07.mp4",
+     "poster": "motion/influencer-shortform-p3-07.jpg"
+    },
+    {
+     "x": 26.5,
+     "y": 52.56,
+     "w": 14.17,
+     "h": 41.15,
+     "src": "motion/influencer-shortform-p3-08.mp4",
+     "poster": "motion/influencer-shortform-p3-08.jpg"
+    },
+    {
+     "x": 60,
+     "y": 52.55,
+     "w": 14.09,
+     "h": 40.89,
+     "src": "motion/influencer-shortform-p3-09.mp4",
+     "poster": "motion/influencer-shortform-p3-09.jpg"
+    },
+    {
+     "x": 76.45,
+     "y": 52.82,
+     "w": 14.09,
+     "h": 40.89,
+     "src": "motion/influencer-shortform-p3-10.mp4",
+     "poster": "motion/influencer-shortform-p3-10.jpg"
+    }
+   ],
+   "4": [
+    {
+     "x": 9.53,
+     "y": 10.81,
+     "w": 14.17,
+     "h": 41.02,
+     "src": "motion/influencer-shortform-p4-01.mp4",
+     "poster": "motion/influencer-shortform-p4-01.jpg"
+    },
+    {
+     "x": 26.5,
+     "y": 10.98,
+     "w": 14.17,
+     "h": 41.15,
+     "src": "motion/influencer-shortform-p4-02.mp4",
+     "poster": "motion/influencer-shortform-p4-02.jpg"
+    },
+    {
+     "x": 43.32,
+     "y": 11.17,
+     "w": 14.09,
+     "h": 40.89,
+     "src": "motion/influencer-shortform-p4-03.mp4",
+     "poster": "motion/influencer-shortform-p4-03.jpg"
+    },
+    {
+     "x": 60.07,
+     "y": 11.15,
+     "w": 14.17,
+     "h": 41.02,
+     "src": "motion/influencer-shortform-p4-04.mp4",
+     "poster": "motion/influencer-shortform-p4-04.jpg"
+    },
+    {
+     "x": 76.52,
+     "y": 11.17,
+     "w": 14.17,
+     "h": 41.02,
+     "src": "motion/influencer-shortform-p4-05.mp4",
+     "poster": "motion/influencer-shortform-p4-05.jpg"
+    },
+    {
+     "x": 9.53,
+     "y": 52.28,
+     "w": 14.17,
+     "h": 41.02,
+     "src": "motion/influencer-shortform-p4-06.mp4",
+     "poster": "motion/influencer-shortform-p4-06.jpg"
+    },
+    {
+     "x": 26.5,
+     "y": 52.55,
+     "w": 14.17,
+     "h": 41.15,
+     "src": "motion/influencer-shortform-p4-07.mp4",
+     "poster": "motion/influencer-shortform-p4-07.jpg"
+    },
+    {
+     "x": 43.25,
+     "y": 52.63,
+     "w": 14.17,
+     "h": 41.15,
+     "src": "motion/influencer-shortform-p4-08.mp4",
+     "poster": "motion/influencer-shortform-p4-08.jpg"
+    },
+    {
+     "x": 60.07,
+     "y": 52.7,
+     "w": 14.09,
+     "h": 40.89,
+     "src": "motion/influencer-shortform-p4-09.mp4",
+     "poster": "motion/influencer-shortform-p4-09.jpg"
+    },
+    {
+     "x": 76.45,
+     "y": 52.7,
+     "w": 14.17,
+     "h": 41.02,
+     "src": "motion/influencer-shortform-p4-10.mp4",
+     "poster": "motion/influencer-shortform-p4-10.jpg"
+    }
+   ]
+  }
  },
  "x-seeding": {
   "title": "X(구 트위터) 시딩",

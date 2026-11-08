@@ -183,3 +183,9 @@ a.pill:hover{background:#2f3a7a;transform:translateY(-1px)}
 .gd-steps .ck{font-size:17px}
 .tb.gd{font-size:16px}
 .tb.gd td.k[rowspan]{border-bottom:3px solid #8e8e8e}
+
+/* 움직이는 요소 */
+.slide .mo{position:absolute;z-index:1;object-fit:cover;display:block;background:#000}
+.tmo{position:relative}
+.tmo .mo{position:absolute;object-fit:cover;border:0 !important;border-radius:0 !important;aspect-ratio:auto !important}
+.thumb.on .tmo .mo,.thumb:hover .tmo .mo{box-shadow:none}

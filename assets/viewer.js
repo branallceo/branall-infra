@@ -78,6 +78,24 @@
     });
   }
 
+  /* ---------- 움직이는 요소 (GIF를 변환한 짧은 영상) ---------- */
+  function motions(page, holder, still) {
+    (D.motion && D.motion[page] || []).forEach(function (m) {
+      var el;
+      if (still) { el = document.createElement('img'); el.src = m.poster; el.alt = ''; el.loading = 'lazy'; }
+      else {
+        el = document.createElement('video');
+        el.muted = true; el.loop = true; el.autoplay = true; el.playsInline = true;
+        el.setAttribute('muted', ''); el.setAttribute('playsinline', ''); el.setAttribute('preload', 'metadata');
+        el.poster = m.poster; el.src = m.src;
+      }
+      el.className = 'mo';
+      el.style.left = m.x + '%'; el.style.top = m.y + '%'; el.style.width = m.w + '%'; el.style.height = m.h + '%';
+      holder.appendChild(el);
+      if (!still && el.play) { var p = el.play(); if (p && p.catch) p.catch(function () {}); }
+    });
+  }
+
   /* ---------- 썸네일 ---------- */
   var thumbs = $('#thumbs');
   for (var i = 1; i <= N; i++) (function (i) {
@@ -87,6 +105,7 @@
     b.addEventListener('click', function () { go(i); document.body.classList.remove('drawer'); });
     thumbs.appendChild(b);
     if (HTML) watchFit(b.querySelector('.fit'));
+    else if (D.motion && D.motion[i]) { var tw = document.createElement('div'); tw.className = 'tmo'; b.insertBefore(tw, b.firstChild); tw.appendChild(b.querySelector('img')); motions(i, tw, true); }
   })(i);
 
   var mobile = window.matchMedia('(max-width: 820px)');
@@ -113,7 +132,7 @@
       var s = document.createElement('div');
       s.className = 'slide'; s.id = 'p' + i; s.style.aspectRatio = D.w + ' / ' + D.h;
       if (HTML) { s.className = 'slide fit'; s.innerHTML = canvasHtml(i); }
-      else { s.innerHTML = '<img class="pg" loading="' + (i <= 2 ? 'eager' : 'lazy') + '" src="' + big(i) + '" alt="' + i + '페이지">'; hotspots(i, s); }
+      else { s.innerHTML = '<img class="pg" loading="' + (i <= 2 ? 'eager' : 'lazy') + '" src="' + big(i) + '" alt="' + i + '페이지">'; hotspots(i, s); motions(i, s); }
       list.appendChild(s);
       if (HTML) watchFit(s);
       var no = document.createElement('div'); no.className = 'pno'; no.textContent = pad(i) + ' / ' + pad(N); list.appendChild(no);
@@ -160,8 +179,9 @@
     hi.onload = function () { if (cur === n) { pgImg.src = hi.src; pgImg.classList.remove('loading'); } };
     hi.src = big(n);
     pgImg.alt = n + '페이지';
-    Array.prototype.forEach.call(slideEl.querySelectorAll('.hot'), function (h) { h.remove(); });
+    Array.prototype.forEach.call(slideEl.querySelectorAll('.hot,.mo'), function (h) { h.remove(); });
     hotspots(n, slideEl);
+    motions(n, slideEl);
     setCur(n);
     preload(n + 1); preload(n - 1);
   }
