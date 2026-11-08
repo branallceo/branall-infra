@@ -12,6 +12,15 @@
   var big = function (i) { return 'img/' + slug + '-' + i + '.webp'; };
   var small = function (i) { return 'img/' + slug + '-t' + i + '.jpg'; };
   var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+  var HTML = window.DECK_HTML && window.DECK_HTML[slug];
+  var canvasHtml = function (i) {
+    return '<div class="canvas">' + HTML(i).replace(/\{\{DOC:([\w-]+)\}\}/g, function (m, s) { return docUrl(s); }) + '</div>';
+  };
+  // .fit 요소 안의 1920x1080 캔버스를 요소 너비에 맞게 축소
+  var ro = window.ResizeObserver ? new ResizeObserver(function (es) {
+    es.forEach(function (e) { e.target.style.setProperty('--s', e.target.clientWidth / 1920); });
+  }) : null;
+  var watchFit = function (el) { el.style.setProperty('--s', (el.clientWidth || 960) / 1920); if (ro) ro.observe(el); };
   var $ = function (s) { return document.querySelector(s); };
   if (/[?&]debug=1/.test(location.search)) document.body.classList.add('debug');
   document.documentElement.style.setProperty('--ar', D.w + ' / ' + D.h);
@@ -74,9 +83,10 @@
   for (var i = 1; i <= N; i++) (function (i) {
     var b = document.createElement('button');
     b.className = 'thumb'; b.setAttribute('aria-label', i + '페이지');
-    b.innerHTML = '<img loading="lazy" src="' + small(i) + '" alt=""><span><b>' + pad(i) + '</b>&nbsp; PAGE</span>';
+    b.innerHTML = (HTML ? '<div class="fit">' + canvasHtml(i) + '</div>' : '<img loading="lazy" src="' + small(i) + '" alt="">') + '<span><b>' + pad(i) + '</b>&nbsp; PAGE</span>';
     b.addEventListener('click', function () { go(i); document.body.classList.remove('drawer'); });
     thumbs.appendChild(b);
+    if (HTML) watchFit(b.querySelector('.fit'));
   })(i);
 
   var mobile = window.matchMedia('(max-width: 820px)');
@@ -90,6 +100,7 @@
     var h = stage.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
     var sw = Math.min(w, h * AR);
     slideEl.style.width = sw + 'px'; slideEl.style.height = (sw / AR) + 'px';
+    slideEl.style.setProperty('--s', sw / 1920);
   }
   var preloaded = {};
   function preload(i) { if (i < 1 || i > N || preloaded[i]) return; preloaded[i] = 1; var im = new Image(); im.src = big(i); }
@@ -101,9 +112,10 @@
     for (var i = 1; i <= N; i++) {
       var s = document.createElement('div');
       s.className = 'slide'; s.id = 'p' + i; s.style.aspectRatio = D.w + ' / ' + D.h;
-      s.innerHTML = '<img class="pg" loading="' + (i <= 2 ? 'eager' : 'lazy') + '" src="' + big(i) + '" alt="' + i + '페이지">';
-      hotspots(i, s);
+      if (HTML) { s.className = 'slide fit'; s.innerHTML = canvasHtml(i); }
+      else { s.innerHTML = '<img class="pg" loading="' + (i <= 2 ? 'eager' : 'lazy') + '" src="' + big(i) + '" alt="' + i + '페이지">'; hotspots(i, s); }
       list.appendChild(s);
+      if (HTML) watchFit(s);
       var no = document.createElement('div'); no.className = 'pno'; no.textContent = pad(i) + ' / ' + pad(N); list.appendChild(no);
     }
     io = new IntersectionObserver(function (es) {
@@ -135,6 +147,13 @@
       setCur(n);
       return;
     }
+    if (HTML) {
+      slideEl.classList.add('fit');
+      slideEl.innerHTML = canvasHtml(n);
+      slideEl.style.setProperty('--s', slideEl.clientWidth / 1920);
+      setCur(n);
+      return;
+    }
     pgImg.classList.add('loading');
     pgImg.src = small(n);
     var hi = new Image();
@@ -147,6 +166,11 @@
     preload(n + 1); preload(n - 1);
   }
 
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a.go');
+    if (!a || a.closest('.thumb')) return;
+    e.preventDefault(); go(+a.getAttribute('data-go'));
+  });
   $('#prev').addEventListener('click', function () { go(cur - 1); });
   $('#next').addEventListener('click', function () { go(cur + 1); });
   $('#full').addEventListener('click', function () {

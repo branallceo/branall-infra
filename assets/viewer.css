@@ -78,3 +78,108 @@ body.debug .hot{background:rgba(255,106,61,.25);outline:1px solid #ff6a3d}
   .bar,.foot{display:none}
 }
 @media (min-width: 821px){ .mtop,.scrim{display:none} }
+
+/* =========================================================
+   HTML 슬라이드 (1920 x 1080 기준, JS가 --s 배율로 축소)
+   ========================================================= */
+.fit{position:relative;overflow:hidden}
+.canvas{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0;transform:scale(var(--s,.5));
+  background:#fff;color:#111;font-family:Pretendard,"Pretendard Variable",-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  letter-spacing:-.01em;overflow:hidden;-webkit-font-smoothing:antialiased}
+.canvas a{color:inherit;text-decoration:none}
+.thumb .fit{width:100%;aspect-ratio:16/9;border-radius:8px;border:1px solid var(--line);background:#fff;transition:box-shadow .15s,border-color .15s}
+.thumb.on .fit{border-color:var(--navy);box-shadow:0 0 0 2px var(--navy)}
+.thumb .canvas *{pointer-events:none}
+
+/* 상단/하단 공통 */
+.sl-top{position:absolute;left:0;right:0;top:22px;height:24px;font-size:15px;color:#666;z-index:3}
+.sl-top .home{position:absolute;left:131px}
+.sl-top .sec{position:absolute;left:497px}
+.sl-top .pno{position:absolute;right:151px}
+.sl-top .go:hover{color:#2b3570;text-decoration:underline;text-underline-offset:3px}
+.sl-top.light,.sl-top.light .go{color:rgba(255,255,255,.85)}
+.sl-foot{position:absolute;right:151px;bottom:28px;text-align:right;font-size:14px;line-height:1.5;color:#777}
+.sl-foot.light{color:rgba(255,255,255,.8)}
+
+/* 그라데이션 배경 (표지/구분 페이지) */
+.grad{position:absolute;inset:0;background:
+  radial-gradient(120% 90% at 100% 0%, rgba(110,108,128,.95) 0%, rgba(110,108,128,0) 45%),
+  linear-gradient(200deg,#4a5592 0%,#3f4a88 40%,#323b74 70%,#252c5c 100%)}
+.dv{position:absolute;left:105px;top:440px;color:#fff}
+.dv h1{font-size:104px;font-weight:500;letter-spacing:-.02em;line-height:1.1}
+.dv p{margin-top:26px;font-size:28px;font-weight:400;opacity:.92}
+.cv{position:absolute;inset:0;color:#fff}
+.cv-top{position:absolute;left:104px;top:40px;font-size:23px;line-height:1.45;font-weight:400}
+.cv h1{position:absolute;left:100px;top:470px;font-size:112px;font-weight:600;letter-spacing:-.02em}
+.cv-bl{position:absolute;left:104px;bottom:52px;font-size:22px;line-height:1.5}
+.cv-br{position:absolute;right:96px;bottom:84px;font-size:21px}
+
+/* 전체 서비스 */
+.svc{position:absolute;left:118px;right:118px;top:120px}
+.svc h2{font-size:46px;font-weight:800;letter-spacing:-.02em;margin-left:8px}
+.svc-cols{display:grid;grid-template-columns:repeat(5,1fr);column-gap:44px;margin-top:100px}
+.svc-col h3{font-size:26px;font-weight:600;padding:0 0 14px 8px;border-bottom:3px solid #111;margin-bottom:12px}
+.svc-it{display:flex;align-items:center;justify-content:space-between;height:66px;padding:0 0 0 8px;font-size:22px;color:#111;border-radius:8px}
+.svc-it small{font-size:13px;letter-spacing:-.03em}
+.svc-it svg{width:31px;height:31px;flex:none;transition:transform .15s}
+.svc-it:hover{background:#f2f4fa}
+.svc-it:hover svg{transform:translateX(3px)}
+
+/* 2단 상품 페이지 */
+.halves{position:absolute;left:117px;right:117px;top:150px;bottom:110px;display:grid;grid-template-columns:1fr 1fr;column-gap:96px}
+.half{position:relative;min-width:0}
+.half.wide{grid-column:1 / -1;padding:0 125px}
+.hd{position:relative;height:262px}
+.pill{position:absolute;right:0;top:4px;width:160px;height:44px;border-radius:10px;background:#1f2551;color:#fff !important;font-size:18px;font-weight:500;display:grid;place-items:center;transition:background .15s,transform .15s}
+a.pill:hover{background:#2f3a7a;transform:translateY(-1px)}
+.pill.off{background:#1f2551;opacity:1;cursor:default}
+.lb{font-size:22px;font-weight:600;color:#333;letter-spacing:0;padding-top:20px}
+.hd h2{font-size:42px;font-weight:700;letter-spacing:-.025em;line-height:1.2;margin-top:2px}
+.hd h2 small{font-size:26px;font-weight:700;margin-left:2px;letter-spacing:-.02em}
+.ds{margin-top:16px;font-size:20px;line-height:1.5;color:#1a1a1a;word-break:keep-all}
+.cks{display:flex;gap:0;margin-top:26px}
+.ck{display:flex;align-items:flex-start;gap:10px;font-size:16px;line-height:1.55;color:#222;min-width:280px}
+.ck .cb{width:22px;height:22px;flex:none;margin-top:1px}
+.ck b{display:block;font-weight:500}
+.ck span{display:block;color:#222}
+
+/* 표 */
+.tb{width:100%;border-collapse:collapse;table-layout:fixed;font-size:17px;color:#222}
+.tb col.ck1{width:24%}
+.tb col.ck2{width:24%}
+.tb.ai col.ck1{width:17%}
+.tb.ai{font-size:15.5px}
+.tb.ai td,.tb.ai th{padding-left:6px;padding-right:6px}
+.tb tr.grp td.k.endk{border-bottom:3px solid #8e8e8e}
+.tb th,.tb td{height:46px;padding:6px 8px;border-bottom:1px solid #dcdcdc;font-weight:400;text-align:left;vertical-align:middle;line-height:1.45}
+.tb thead th{border-top:3px solid #8e8e8e}
+.tb .v{text-align:center;border-left:1px solid #dcdcdc}
+.tb .s{padding-left:14px}
+.tb tr.grp .k{border-bottom:1px solid #dcdcdc}
+.tb tbody tr:last-child td,.tb tbody tr:last-child th{border-bottom:3px solid #8e8e8e}
+.tb tfoot td{border-bottom:1px solid #dcdcdc;height:128px}
+.tb tfoot .nt{border-left:1px solid #dcdcdc;padding:14px 16px}
+.tb .nt ul{list-style:none}
+.tb .nt li{position:relative;padding-left:14px;font-size:15.5px;line-height:1.7}
+.tb .nt li::before{content:"";position:absolute;left:2px;top:.75em;width:4px;height:4px;border-radius:50%;background:#444}
+.tb tr.tall td{height:auto;padding-top:14px;padding-bottom:14px}
+.tb .tick{width:16px;height:16px;vertical-align:middle}
+.tb .xmark{font-size:15px;color:#444}
+.tb.ai tfoot td{height:auto;padding:16px 8px;border-bottom:1px solid #dcdcdc}
+.tb.ai tfoot .v{line-height:1.7}
+.tb.ai tbody tr:last-child td{border-bottom:3px solid #8e8e8e}
+.half.wide .hd{height:250px}
+.half.wide .pill{right:0}
+
+/* 가이드라인 */
+.ck.solo{margin:6px 0 14px}
+.tb.gd tbody tr:last-child td{border-bottom:3px solid #8e8e8e}
+.tb.gd td.k{border-bottom:1px solid #dcdcdc}
+.tb.gd + .ck.solo{margin-top:40px}
+.gd-list{padding-left:54px;font-size:16px;line-height:1.65;color:#222}
+.gd-list li{margin-bottom:2px}
+.gd-list li span{display:block;color:#444;padding-left:6px}
+.gd-steps{display:flex;flex-direction:column;gap:46px;margin-top:-30px;padding-left:20px}
+.gd-steps .ck{font-size:17px}
+.tb.gd{font-size:16px}
+.tb.gd td.k[rowspan]{border-bottom:3px solid #8e8e8e}
