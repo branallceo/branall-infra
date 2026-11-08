@@ -122,7 +122,7 @@
       notes: ['IG 기준 2주, YT 기준 4주간 모니터링이 진행됩니다.', '최소 인원은 10인 단위로만 증원 가능합니다.']
     },
     xhs: {
-      label: 'Influencer Marketing', title: '샤오홍슈 마케팅', doc: 'xiaohongshu',
+      label: 'Viral Marketing', title: '샤오홍슈 마케팅', doc: 'xiaohongshu',
       desc: ['F&B 매장 or 올리브영, 다이소 등 국내 방문하는 중국인(이주민, 유학생)을 타깃으로', '샤오홍슈 상에서 활성화된 인원을 모집하여 플랫폼 내 인지도 확산'],
       checks: [['게재 지면', '샤오홍슈 내 피드'], ['게재 유형', '피드 or 영상 형태로 제작']],
       cols: ['자유모집(팔로워 5만 ▽)', '팔로워 1만 이상 지정 모집'],
