@@ -1,5 +1,5 @@
 /* 소개서 목록, 링크 위치, 움직이는 요소(motion: GIF/영상) 위치. x,y,w,h 는 페이지 기준 % */
-window.DOCS_VERSION = '20261108g'; /* 이미지 교체 시 이 값을 바꾸면 방문자 화면에 바로 반영 */
+window.DOCS_VERSION = '20261108h'; /* 이미지 교체 시 이 값을 바꾸면 방문자 화면에 바로 반영 */
 window.DOCS = {
  "main": {
   "title": "브랜올 매체 인프라",

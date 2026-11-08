@@ -317,6 +317,115 @@
     guide
   ];
 
+  /* =========================================================
+     모바일 전용 화면 (같은 내용을 세로형 카드로 재배치)
+     - 단가/문구는 위 S 데이터를 그대로 쓰므로 PC와 자동으로 같아진다.
+     - 표지/목차/가이드처럼 함수 안에 적힌 문구는 아래에 한 번 더 적혀 있으니 수정 시 같이 고칠 것.
+     ========================================================= */
+  function mVals(v, n) {
+    if (typeof v === 'string') return '<td class="mv" colspan="' + n + '">' + cell(v) + '</td>';
+    return v.map(function (x) { return '<td class="mv">' + cell(x) + '</td>'; }).join('');
+  }
+  function mTable(s) {
+    var n = s.cols.length, h = '<div class="mt-wrap"><table class="mt c' + n + '"><thead><tr><th>서비스</th>' + s.cols.map(function (c) { return '<th class="mv">' + esc(c) + '</th>'; }).join('') + '</tr></thead><tbody>';
+    s.rows.forEach(function (r) {
+      if (r.group) {
+        h += '<tr class="mg"><td colspan="' + (n + 1) + '">' + esc(r.group) + '</td></tr>';
+        r.rows.forEach(function (g) { h += '<tr><td class="mk sub">' + esc(g.sub) + '</td>' + mVals(g.v, n) + '</tr>'; });
+      } else if (r.sub) h += '<tr><td class="mk sub">' + esc(r.sub) + '</td>' + mVals(r.v, n) + '</tr>';
+      else h += '<tr><td class="mk">' + esc(r.k) + '</td>' + mVals(r.v, n) + '</tr>';
+    });
+    return h + '</tbody></table></div>';
+  }
+  function mNotes(list, title) {
+    if (!list || !list.length) return '';
+    return '<div class="mnotes"><b>' + (title || '유의사항') + '</b><ul>' + list.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul></div>';
+  }
+  function mChecks(checks) {
+    if (!checks || !checks.length) return '';
+    return '<ul class="mck">' + checks.map(function (c) { return '<li>' + CHECK_ICON + '<div><b>' + esc(c[0]) + '</b><span>' + esc(c[1]) + '</span></div></li>'; }).join('') + '</ul>';
+  }
+  function mBtn(s) {
+    if (s.noPill) return '';
+    return s.doc ? '<a class="mbtn" href="{{DOC:' + s.doc + '}}" target="_blank" rel="noopener">상품소개서 보기 <span>→</span></a>' : '<span class="mbtn off">별도 문의</span>';
+  }
+  function mHead(s) {
+    return '<div class="mlb">' + esc(s.label) + '</div><h3>' + esc(s.title) + (s.small ? ' <small>' + esc(s.small) + '</small>' : '') + '</h3>' +
+      '<p class="mds">' + s.desc.map(esc).join(' ') + '</p>' + mChecks(s.checks);
+  }
+  function mProduct(s) { return '<article class="mcard">' + mHead(s) + mTable(s) + mNotes(s.notes) + mBtn(s) + '</article>'; }
+  function mSection(section) { return section ? '<div class="msec">' + go(SECTION[section][1], SECTION[section][0] + ' <span>›</span>', 'msec-link') + '</div>' : ''; }
+  function mTwo(section, a, b) { return mSection(section) + mProduct(S[a]) + mProduct(S[b]); }
+  function mDivider(title, sub) { return '<div class="mdiv"><div class="grad"></div><div class="mdiv-in"><span>브랜올 상품소개서</span><h2>' + title + '</h2><p>' + sub + '</p></div></div>'; }
+  function mCover() {
+    return '<div class="mdiv mcover"><div class="grad"></div><div class="mdiv-in"><span>Think, Build, Grow</span><h2>브랜올<br>매체 인프라</h2>' +
+      '<p>브랜드의 마케팅 방향을 설계하고<br>실행으로 옮겨 숫자로 증명합니다.</p><em>Digital Marketing Agency · Final Update 2026</em></div></div>';
+  }
+  function mServices() {
+    var cols = [
+      ['바이럴 마케팅', [['인스타그램(파워페이지)', 4], ['인스타그램(유머페이지)', 4], ['유튜브 쇼츠 채널', 5], ['X(트위터) 대형채널 RT', 5], ['카페 · 커뮤니티 바이럴', 6], ['언론보도 발행', 6]]],
+      ['인플루언서 마케팅', [['네이버 시딩(일반)', 8], ['네이버 시딩(파블·뷰스타·인플루언서)', 8], ['인스타그램(나노)', 9], ['인스타그램(마이크로·메가)', 9], ['X(트위터) 시딩', 10], ['유튜브 · 틱톡 시딩', 10], ['무가시딩 · 초청', 11], ['샤오홍슈', 11]]],
+      ['콘텐츠 제작', [['AI 비주얼 제작', 13], ['SNS 카드뉴스 제작', 13], ['바이럴 숏폼 제작', 14], ['브랜드 필름 제작', 14], ['촬영 · 편집(셀프형, 방문형)', 15]]],
+      ['미디어 믹스', [['전략 제안 및 컨설팅', 17], ['온 · 모바일 광고', 17]]],
+      ['업무 가이드라인', [['유의사항 · 부대비용', 19], ['취소 · 안내사항', 19]]]
+    ];
+    return '<div class="mcard"><div class="mlb">INDEX</div><h3>전체 서비스</h3><p class="mds">보고 싶은 서비스를 누르면 해당 페이지로 이동합니다.</p>' + cols.map(function (c) {
+      return '<div class="msvc"><h4>' + c[0] + '</h4>' + c[1].map(function (it) { return '<a class="go msvc-it" data-go="' + it[1] + '" href="#' + it[1] + '">' + it[0] + '<span>›</span></a>'; }).join('') + '</div>';
+    }).join('') + '</div>';
+  }
+  function mAi() {
+    var plans = [
+      ['Still image', '스틸 이미지', '이미지 10컷 생성 · 레퍼런스 기반 기획 가능', '100만원 / 10EA'],
+      ['Still image + Motion', '스틸 이미지 + 모션', '스틸 이미지 1컷 + 모션 콘텐츠 1건 · 레퍼런스 기반 기획 가능 · 영상 내 음원·효과음 미포함', '100만원 / 2EA'],
+      ['Short video', '숏폼 영상', '영상 1건 제작 · 레퍼런스 기반 기획 가능 · AI 소스 생성 및 컷 편집 · 음원, 효과음 포함', '100만원~ / 1EA']
+    ];
+    var s = { label: 'Contents Production', title: 'AI 비주얼 제작', desc: ['생성형 AI 기술을 활용해 브랜드 콘셉트에 최적화된 감각적인 스틸 이미지 및 모션 비주얼을 기획·제작하는 고효율 콘텐츠 솔루션'], checks: [['특화 채널', '플랫폼 전 채널']] };
+    return '<article class="mcard">' + mHead(s) + plans.map(function (p) {
+      return '<div class="mplan"><div class="mplan-h"><b>' + p[0] + '</b><span>' + p[1] + '</span></div><p>' + p[2] + '</p><div class="mplan-p">비용(부가세 별도) <b>' + p[3] + '</b></div></div>';
+    }).join('') + mNotes(['<이미지> 제작 상담 → 시안 공유 → 1차 컨펌 → 피드백/수정 → 최종본 납기', '<영상> 제작 상담 → 영상 컨펌 → 피드백/수정 → 최종본 납기'], '업무 진행') + '<span class="mbtn off">별도 문의</span></article>';
+  }
+  function mShoot() {
+    var s = { label: 'Contents Production', title: '촬영 · 편집', desc: ['현장 방문 촬영부터 스튜디오 셀프 제작까지, 브랜드 환경과 니즈에 맞춘 맞춤형 촬영 및 후반 편집 통합 영상 제작 서비스'], checks: [['특화 채널', '바이럴 광고 소재, 퍼포먼스 광고 소재']],
+      cols: ['셀프형', '방문형(올영·다이소)', '팝업 방문영상'],
+      rows: [{ k: '최소수량', v: ['1건', '1건', '1건'] }, { k: '비용(부가세 별도)', v: ['25만원', '25만원', '30만원'] },
+        { group: '업무진행', rows: [{ sub: '기획 · 촬영 · 편집', v: 'V' }, { sub: '얼굴 노출', v: '별도 협의' }, { sub: '게시물 발행', v: 'X' }, { sub: '제품 비용', v: '별도(매장 구입 시 별도 협의)' }] }],
+      notes: ['소재에 따라 진행이 제한될 수 있습니다.', '방문형, 팝업의 경우 사전에 촬영 스케줄 협의가 필요합니다.'] };
+    return mSection('contents') + mProduct(s);
+  }
+  function mGuide() {
+    var cancel = '<div class="mt-wrap"><table class="mt c2"><thead><tr><th>서비스</th><th class="mv">취소 단계</th><th class="mv">비용(부가세 별도)</th></tr></thead><tbody>' +
+      '<tr><td class="mk">바이럴/인플루언서 마케팅</td><td class="mv">-</td><td class="mv">총 계약대금의 10% + 기진행 비용</td></tr>' +
+      '<tr><td class="mk" rowspan="2">미디어 믹스/퍼포먼스 대행</td><td class="mv">캠페인 시작 전</td><td class="mv">총 계약대금의 10%</td></tr>' +
+      '<tr><td class="mv">캠페인 시작 후</td><td class="mv">총 계약대금의 30% + 기진행 비용</td></tr></tbody></table></div>';
+    var A = '<article class="mcard">' + mHead({ label: 'Guideline', title: '유의사항 · 부대비용', desc: ['원활한 업무 진행과 투명한 캠페인 운영을 위해 원고 사전 검수, 어레인지, 원고료 등 관련 기준 및 항목별 실비 규정을 안내합니다.'], checks: [['청구 기준', '업무 개시 후 광고주 요청 또는 과실로 인한 업무 중단 시 발생합니다.']] }) +
+      '<h4 class="mh4">취소 수수료</h4>' + cancel +
+      mNotes(['"총계약대금"은 광고주가 계약 또는 견적서의 내용에 따라 브랜올에게 지급하기로 한 금액을 의미하며, 원고료, 매체비 등의 금액을 모두 포함합니다.', '아래 항목에서 1가지라도 해당될 경우 업무 개시로 간주합니다. ① 보도자료 등 원고 작성 후 광고주에게 컨펌 요청한 경우 ② 매체 구좌 부킹이 완료된 경우 ③ 1회 이상 인플루언서 리스트를 제안한 경우', '기진행 비용은 원고료, 매체비, 택배비 등 이미 발생했거나 향후 지급이 불가피한 비용을 모두 포함합니다.'], '유의 사항') + '</article>';
+    var B = '<article class="mcard">' + mHead({ label: 'Guideline', title: '취소 · 안내사항', desc: ['업무 개시 시점 및 광고주 사정에 따른 취소 수수료 규정과 신규 거래처 계약·결제 프로세스에 대한 안내를 제공합니다.'],
+      checks: [['서비스 안내', '줌 미팅 또는 대면 미팅을 통해 브랜올의 서비스를 안내드립니다.'], ['담당자 배정', '캠페인 수량과 상황에 맞게 팀 단위 담당자가 배정됩니다.'], ['비용 결제', '신규 거래처는 첫 진행 캠페인에 한해 100% 선결제로 진행됩니다. (업무 순서) 견적서 컨펌 → 계산서 발행 → 대금 결제 → 담당자 배정'], ['계약 조건과 방식', '광고주 니즈에 따라 개별 계약 또는 전체 캠페인에 대한 계약이 가능합니다.']] }) + '</article>';
+    return mSection('guide') + A + B;
+  }
+  var MPAGES = [null, mCover, mServices,
+    function () { return mDivider('바이럴 마케팅', '자발적 확산을 유도하는 소셜 버즈 창출'); },
+    function () { return mTwo('viral', 'powerpage', 'humor'); },
+    function () { return mTwo('viral', 'shorts', 'xrt'); },
+    function () { return mTwo('viral', 'cafe', 'press'); },
+    function () { return mDivider('인플루언서 마케팅', '파급력 있는 크리에이터 중심의 타깃 임팩트'); },
+    function () { return mTwo('influ', 'naver', 'naverPower'); },
+    function () { return mTwo('influ', 'nano', 'micro'); },
+    function () { return mTwo('influ', 'xseed', 'yttk'); },
+    function () { return mTwo('influ', 'free', 'xhs'); },
+    function () { return mDivider('콘텐츠 제작', '트렌디한 비주얼로 완성하는 브랜드 스토리텔링'); },
+    function () { return mSection('contents') + mAi() + mProduct(S.card); },
+    function () { return mTwo('contents', 'shortform', 'film'); },
+    mShoot,
+    function () { return mDivider('미디어 믹스', '마케팅 시너지를 극대화하는 멀티 채널 포트폴리오'); },
+    function () { return mTwo('mix', 'strategy', 'perf'); },
+    function () { return mDivider('업무 가이드라인', '성공적인 협업을 위한 가이드 및 운영 기준'); },
+    mGuide
+  ];
+  window.DECK_MOBILE = window.DECK_MOBILE || {};
+  window.DECK_MOBILE.main = function (i) { return MPAGES[i] ? MPAGES[i]() : ''; };
+
   window.DECK_HTML = window.DECK_HTML || {};
   window.DECK_HTML.main = function (i) { return PAGES[i] ? PAGES[i]() : ''; };
 })();

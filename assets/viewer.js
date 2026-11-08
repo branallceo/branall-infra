@@ -14,6 +14,8 @@
   var small = function (i) { return 'img/' + slug + '-t' + i + '.jpg' + VER; };
   var pad = function (n) { return (n < 10 ? '0' : '') + n; };
   var HTML = window.DECK_HTML && window.DECK_HTML[slug];
+  var MOB = window.DECK_MOBILE && window.DECK_MOBILE[slug];
+  var docLinks = function (h) { return h.replace(/\{\{DOC:([\w-]+)\}\}/g, function (m, s) { return docUrl(s); }); };
   var canvasHtml = function (i) {
     return '<div class="canvas">' + HTML(i).replace(/\{\{DOC:([\w-]+)\}\}/g, function (m, s) { return docUrl(s); }) + '</div>';
   };
@@ -129,11 +131,22 @@
   var list = $('#list'), listBuilt = false, io;
   function buildList() {
     if (listBuilt) return; listBuilt = true;
+    if (!MOB) {
+      var tip = document.createElement('div'); tip.className = 'm-tip';
+      tip.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M12 3v3M12 18v3"/></svg><span>슬라이드를 누르면 화면에 꽉 차게 가로로 크게 볼 수 있어요</span>';
+      list.appendChild(tip);
+    }
     for (var i = 1; i <= N; i++) {
+      if (MOB) {
+        var m = document.createElement('section'); m.className = 'm-page'; m.id = 'p' + i;
+        m.innerHTML = docLinks(MOB(i));
+        list.appendChild(m);
+        continue;
+      }
       var s = document.createElement('div');
       s.className = 'slide'; s.id = 'p' + i; s.style.aspectRatio = D.w + ' / ' + D.h;
       if (HTML) { s.className = 'slide fit'; s.innerHTML = canvasHtml(i); }
-      else { s.innerHTML = '<img class="pg" loading="' + (i <= 2 ? 'eager' : 'lazy') + '" src="' + big(i) + '" alt="' + i + '페이지">'; hotspots(i, s); motions(i, s); }
+      else { s.innerHTML = '<img class="pg" loading="' + (i <= 2 ? 'eager' : 'lazy') + '" src="' + big(i) + '" alt="' + i + '페이지">'; hotspots(i, s); motions(i, s); (function (n, el) { el.addEventListener('click', function (e) { if (e.target.closest('a')) return; openLB(n); }); })(i, s); }
       list.appendChild(s);
       if (HTML) watchFit(s);
       var no = document.createElement('div'); no.className = 'pno'; no.textContent = pad(i) + ' / ' + pad(N); list.appendChild(no);
@@ -141,8 +154,38 @@
     io = new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting) setCur(+e.target.id.slice(1)); });
     }, { rootMargin: '-18% 0px -78% 0px' });
-    Array.prototype.forEach.call(list.querySelectorAll('.slide'), function (el) { io.observe(el); });
+    Array.prototype.forEach.call(list.querySelectorAll('.slide, .m-page'), function (el) { io.observe(el); });
   }
+
+  /* ---------- 모바일: 가로로 크게 보기 (이미지 소개서) ---------- */
+  var lb = null, lbIdx = 1;
+  function lbRender() {
+    var vw = window.innerWidth, vh = window.innerHeight, portrait = vh > vw;
+    var box = lb.querySelector('.lbx-slide');
+    box.innerHTML = '<img class="pg" src="' + big(lbIdx) + '" alt="">';
+    hotspots(lbIdx, box); motions(lbIdx, box);
+    var w, h;
+    if (portrait) { w = Math.min(vh * 0.94, vw * 0.94 * AR); h = w / AR; box.style.transform = 'translate(-50%,-50%) rotate(90deg)'; }
+    else { w = Math.min(vw * 0.96, vh * 0.86 * AR); h = w / AR; box.style.transform = 'translate(-50%,-50%)'; }
+    box.style.width = w + 'px'; box.style.height = h + 'px';
+    lb.querySelector('.lbx-num').textContent = pad(lbIdx) + ' / ' + pad(N);
+    lb.classList.toggle('portrait', portrait);
+  }
+  function openLB(n) {
+    lbIdx = n;
+    if (!lb) {
+      lb = document.createElement('div'); lb.className = 'lbx';
+      lb.innerHTML = '<div class="slide lbx-slide"></div><div class="lbx-bar"><button class="lbx-prev" aria-label="이전">‹</button><span class="lbx-num"></span><button class="lbx-next" aria-label="다음">›</button><button class="lbx-close" aria-label="닫기">닫기</button></div>';
+      document.body.appendChild(lb);
+      lb.querySelector('.lbx-close').addEventListener('click', closeLB);
+      lb.querySelector('.lbx-prev').addEventListener('click', function () { if (lbIdx > 1) { lbIdx--; lbRender(); } });
+      lb.querySelector('.lbx-next').addEventListener('click', function () { if (lbIdx < N) { lbIdx++; lbRender(); } });
+      window.addEventListener('resize', function () { if (lb && lb.classList.contains('on')) lbRender(); });
+    }
+    lb.classList.add('on'); document.body.classList.add('lbx-open');
+    lbRender();
+  }
+  function closeLB() { lb.classList.remove('on'); document.body.classList.remove('lbx-open'); lb.querySelector('.lbx-slide').innerHTML = ''; go(lbIdx); }
 
   function setCur(n) {
     cur = n;
