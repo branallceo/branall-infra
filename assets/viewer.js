@@ -83,12 +83,12 @@
   function motions(page, holder, still) {
     (D.motion && D.motion[page] || []).forEach(function (m) {
       var el;
-      if (still) { el = document.createElement('img'); el.src = m.poster; el.alt = ''; el.loading = 'lazy'; }
+      if (still) { el = document.createElement('img'); el.src = m.poster + VER; el.alt = ''; el.loading = 'lazy'; }
       else {
         el = document.createElement('video');
         el.muted = true; el.loop = true; el.autoplay = true; el.playsInline = true;
         el.setAttribute('muted', ''); el.setAttribute('playsinline', ''); el.setAttribute('preload', 'metadata');
-        el.poster = m.poster; el.src = m.src;
+        el.poster = m.poster + VER; el.src = m.src + VER;
       }
       el.className = 'mo';
       el.style.left = m.x + '%'; el.style.top = m.y + '%'; el.style.width = m.w + '%'; el.style.height = m.h + '%';
