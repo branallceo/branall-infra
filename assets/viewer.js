@@ -153,7 +153,10 @@
     if (document.fullscreenElement) document.exitFullscreen();
     else if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen();
   });
-  $('#mmenu').addEventListener('click', function () { document.body.classList.add('drawer'); });
+  $('#mmenu').addEventListener('click', function () {
+    document.body.classList.add('drawer');
+    var on = thumbs.children[cur - 1]; if (on) on.scrollIntoView({ block: 'center' });
+  });
   $('#scrim').addEventListener('click', function () { document.body.classList.remove('drawer'); });
 
   document.addEventListener('keydown', function (e) {
