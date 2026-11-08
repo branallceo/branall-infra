@@ -9,8 +9,9 @@
   var N = D.n, AR = D.w / D.h;
   var isFile = location.protocol === 'file:';
   var docUrl = function (s) { return s === 'main' ? (isFile ? 'index.html' : './') : (isFile ? s + '.html' : './' + s); };
-  var big = function (i) { return 'img/' + slug + '-' + i + '.webp'; };
-  var small = function (i) { return 'img/' + slug + '-t' + i + '.jpg'; };
+  var VER = window.DOCS_VERSION ? '?v=' + window.DOCS_VERSION : '';
+  var big = function (i) { return 'img/' + slug + '-' + i + '.webp' + VER; };
+  var small = function (i) { return 'img/' + slug + '-t' + i + '.jpg' + VER; };
   var pad = function (n) { return (n < 10 ? '0' : '') + n; };
   var HTML = window.DECK_HTML && window.DECK_HTML[slug];
   var canvasHtml = function (i) {
