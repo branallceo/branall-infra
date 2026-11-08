@@ -1,5 +1,5 @@
 /* 소개서 목록, 링크 위치, 움직이는 요소(motion: GIF/영상) 위치. x,y,w,h 는 페이지 기준 % */
-window.DOCS_VERSION = '20261108b'; /* 이미지 교체 시 이 값을 바꾸면 방문자 화면에 바로 반영 */
+window.DOCS_VERSION = '20261108c'; /* 이미지 교체 시 이 값을 바꾸면 방문자 화면에 바로 반영 */
 window.DOCS = {
  "main": {
   "title": "브랜올 매체 인프라",
@@ -494,19 +494,7 @@ window.DOCS = {
   "title": "인스타그램 파워페이지 상품소개서",
   "n": 7,
   "w": 3485,
-  "h": 1961,
-  "motion": {
-   "4": [
-    {
-     "x": 64.57,
-     "y": 21.75,
-     "w": 14.1,
-     "h": 31.3,
-     "src": "motion/instagram-powerpage-p4-01.mp4",
-     "poster": "motion/instagram-powerpage-p4-01.jpg"
-    }
-   ]
-  }
+  "h": 1961
  },
  "instagram-explore": {
   "title": "인스타그램 돋보기 상품소개서",
@@ -522,50 +510,26 @@ window.DOCS = {
   "motion": {
    "3": [
     {
-     "x": 79.45,
-     "y": 19.87,
-     "w": 19.78,
-     "h": 57.52,
-     "src": "motion/youtube-shorts-p3-01.mp4",
-     "poster": "motion/youtube-shorts-p3-01.jpg"
-    },
-    {
-     "x": 40.5,
-     "y": 21.01,
-     "w": 18.63,
-     "h": 51.86,
+     "x": 19.85,
+     "y": 21,
+     "w": 19.5,
+     "h": 56.8,
      "src": "motion/youtube-shorts-p3-02.mp4",
      "poster": "motion/youtube-shorts-p3-02.jpg"
     },
     {
-     "x": 0.54,
-     "y": 21.15,
-     "w": 19.53,
-     "h": 56.81,
-     "src": "motion/youtube-shorts-p3-03.mp4",
-     "poster": "motion/youtube-shorts-p3-03.jpg"
+     "x": 40.25,
+     "y": 21,
+     "w": 19.5,
+     "h": 56.8,
+     "src": "motion/youtube-shorts-p3-pan.mp4",
+     "poster": "motion/youtube-shorts-p3-pan.jpg"
     },
     {
-     "x": 59.78,
-     "y": 21.53,
-     "w": 19.18,
-     "h": 55.84,
-     "src": "motion/youtube-shorts-p3-04.mp4",
-     "poster": "motion/youtube-shorts-p3-04.jpg"
-    },
-    {
-     "x": 20.62,
-     "y": 21.17,
-     "w": 19.43,
-     "h": 56.64,
-     "src": "motion/youtube-shorts-p3-05.mp4",
-     "poster": "motion/youtube-shorts-p3-05.jpg"
-    },
-    {
-     "x": 79.39,
-     "y": 22.13,
-     "w": 19.93,
-     "h": 58.05,
+     "x": 60.65,
+     "y": 21,
+     "w": 19.5,
+     "h": 56.8,
      "src": "motion/youtube-shorts-p3-06.mp4",
      "poster": "motion/youtube-shorts-p3-06.jpg"
     }
