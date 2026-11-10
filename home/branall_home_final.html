@@ -211,6 +211,11 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 .panel .media{aspect-ratio:4/5;overflow:hidden;border-radius:16px}
 .panel .media img{width:100%;height:100%;object-fit:cover;display:block}
 @media(max-width:900px){.tabs .tgrp{flex:0 0 auto;align-self:center;margin:0 10px 0 2px;padding:0;white-space:nowrap}}
+.testi{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.testi blockquote{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;font-size:15px;line-height:1.75;color:#d6d6dc;text-wrap:pretty;margin:0}
+.testi footer{margin-top:18px;padding-top:14px;border-top:1px solid var(--line);font-size:13px}
+.testi footer b{color:#fff;margin-right:8px}.testi footer span{color:var(--mute)}
+@media(max-width:900px){.testi{grid-template-columns:1fr}}
 </style></head><body>
 <header><a class="logo en" href="#top" aria-label="BRANALL 홈">BRANALL<sup>®</sup></a>
 <nav class="main"><a href="branall_about.html">ABOUT</a><a href="branall_reference.html">REFERENCE</a><a href="branall_channels.html">CHANNELS</a><a href="branall_reels.html">REELS</a><a href="branall_insight.html">INSIGHT</a></nav>
@@ -244,6 +249,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 <section class="pad" id="ref" style="padding-top:20px"><div class="sh reveal"><h2><small>REFERENCE</small>숫자로 남은<br>브랜올의 피드</h2>
  <div class="filters" id="filters"><button class="on" data-f="all">전체</button><button data-f="BEAUTY">뷰티</button><button data-f="F&B">F&amp;B</button><button data-f="LIFESTYLE">라이프스타일</button></div></div>
  <div class="posts collapsed" id="posts"></div>
+ <p style="font-size:12px;color:#6c6c76;margin:18px 0 8px">* 성과 수치는 캠페인 당시 각 매체 인사이트(조회수·검색량 등) 기준 자체 집계이며, 사례별 매체는 카드에 표기되어 있습니다.</p>
  <div class="moreref"><button class="btn blue" id="moreBtn">레퍼런스 더 보기 +6</button><a class="btn line" href="https://www.branall.co.kr/portfolio">전체 포트폴리오 →</a></div></section>
 
 <section class="pad" id="clients" style="padding-top:20px"><div class="sh reveal"><h2><small>CLIENTS</small>매년 200개+ 브랜드가<br>브랜올과 함께합니다</h2><p style="color:var(--mute);font-size:16px;max-width:400px;line-height:1.65">뷰티부터 F&amp;B 프랜차이즈, 라이프스타일, 주류, 플랫폼까지. 다양한 업종의 브랜드와 피드의 화제를 만들어 왔습니다.</p></div>
@@ -262,6 +268,13 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   <div class="pr"><span class="n en">04</span><h4>결과 리포트</h4><p>조회수, 반응, 검색 변화를 숫자로 정리해 드립니다.</p></div>
  </div></section>
 
+
+<section class="pad" id="trust" style="padding-top:0"><div class="sh reveal"><h2><small>TRUST</small>인하우스 마케터들이<br>서로 소개하는 회사</h2><div class="chip" style="position:static;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 22px"><b style="font-size:26px;color:#fff">78%</b><span style="display:block;font-size:12px;color:var(--mute)">재계약율</span></div></div>
+ <div class="testi reveal">
+  <blockquote>"제품과 서비스의 핵심 소구점을 활용한 캠페인 초기 기획이 좋습니다. 특히 실행 시 기획을 디벨롭하는 역량이 있는 팀입니다."<footer><b>김준현</b><span>뷰티브랜드 A사 매니저</span></footer></blockquote>
+  <blockquote>"퍼포먼스 마케팅을 진행하면서 가장 걱정됐던 부분이 소재였는데, 브랜올의 바이럴 소재 제작 덕에 매출이 성장하고 있습니다. 전략 제안이 인상적입니다."<footer><b>이지수</b><span>F&amp;B 브랜드 마케팅 팀장</span></footer></blockquote>
+  <blockquote>"빠른 커뮤니케이션과 신속한 지원이 인상적이었습니다. 인플루언서 콘텐츠가 좋은 반응을 얻으며 신규 유입에도 긍정적 영향을 미쳤습니다."<footer><b>조민준</b><span>생활가전 브랜드 T사 대표이사</span></footer></blockquote>
+ </div></section>
 <section class="pad" id="insight" style="padding-top:0"><div class="sh reveal"><h2><small>INSIGHT</small>현장에서 본 바이럴</h2><a class="btn line" href="https://www.branall.co.kr/insight">전체 글 보기 →</a></div>
  <div class="ins reveal">
  <a href="https://www.branall.co.kr/post/reels-2611-w2-ulta-spirit-tunnel"><img class="thumb" loading="lazy" src="https://static.wixstatic.com/media/cb9467_1706bfbb348e469bb5ffce57823cd9e8~mv2.jpg/v1/fill/w_800,h_450,al_c,q_85/i.jpg" alt=""><span>캠페인 노트</span><h4>직원들의 환영식이 광고 상품이 됐다? 울타뷰티 홀리데이 캠페인</h4><i>읽어보기 →</i></a>
@@ -278,15 +291,12 @@ footer a{text-decoration:underline;text-underline-offset:3px}
    <a href="mailto:contact@branall.co.kr"><b>EMAIL</b><span>contact@branall.co.kr</span></a>
    <a href="https://www.instagram.com/branall_kr/" target="_blank"><b>INSTAGRAM</b><span>@branall_kr →</span></a>
   </div></div>
- <form onsubmit="event.preventDefault();this.querySelector('.btn').textContent='접수되었습니다 (초안 미리보기)';">
-  <h3>프로젝트 문의</h3>
-  <div class="fr"><label>회사 · 브랜드명 *<input required placeholder="예) 브랜올"></label><label>담당자명 *<input required placeholder="홍길동"></label></div>
-  <div class="fr"><label>연락처 *<input required placeholder="010-0000-0000"></label><label>이메일<input type="email" placeholder="name@company.com"></label></div>
-  <label>관심 매체 (복수 선택)<div class="pick"><span>인스타그램</span><span>유튜브 쇼츠</span><span>X</span><span>인플루언서 숏폼</span><span>네이버 체험단</span><span>샤오홍슈</span><span>잘 모르겠어요</span></div></label>
-  <label>문의 내용<textarea placeholder="제품, 목표, 일정, 예산 등을 자유롭게 적어주세요."></textarea></label>
-  <div class="agree"><input type="checkbox" required id="ag"><label for="ag" style="display:inline;font-weight:500">개인정보 수집 및 이용에 동의합니다.</label> <a href="https://www.branall.co.kr/privacy" target="_blank">보기</a></div>
-  <button class="btn blue">문의 보내기 →</button>
- </form></div></section>
+ <div style="background:#fff;border-radius:22px;padding:40px 34px;display:flex;flex-direction:column;gap:14px;justify-content:center">
+  <h3 style="color:#0b0b0d;font-size:24px;letter-spacing:-.02em">프로젝트 문의</h3>
+  <p style="color:#555;font-size:15px;line-height:1.7">바로 아래 문의 양식에 남겨주시면<br>24시간 내 담당자가 연락드립니다.</p>
+  <a class="btn blue" href="#wixform" onclick="try{parent.postMessage('scrollToForm','*')}catch(e){}" style="justify-content:center">문의 양식 작성하기 ↓</a>
+  <a class="btn" href="https://pf.kakao.com/_QLwxlX" target="_blank" style="background:#FEE500;color:#191919;justify-content:center">카카오톡으로 바로 상담</a>
+ </div></div></section>
 </main>
 
 <footer><div><div class="flogo en">BRANALL<sup style="font-size:.4em">®</sup></div>대표 이규태 | 사업자등록번호 115-65-00596<br>인천광역시 연수구 인천타워대로 송도센트로드 B동 3406호<br>TEL 070-4108-2296 | contact@branall.co.kr</div>
