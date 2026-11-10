@@ -222,10 +222,10 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 @media(max-width:900px){.about .state{font-size:24px;line-height:1.5}.state .sline{margin-bottom:14px}}
 </style></head><body>
 <header><a class="logo en" href="#top" aria-label="BRANALL 홈">BRANALL<sup>®</sup></a>
-<nav class="main"><a href="branall_about.html">ABOUT</a><a href="branall_reference.html">REFERENCE</a><a href="branall_channels.html">CHANNELS</a><a href="branall_reels.html">REELS</a><a href="branall_insight.html">INSIGHT</a></nav>
+<nav class="main"><a href="#about">ABOUT</a><a href="#ref">REFERENCE</a><a href="#channels">CHANNELS</a><a href="#reels">REELS</a><a href="#insight">INSIGHT</a></nav>
 <div class="hright"><a class="btn blue" href="#contact">상담 신청</a><button class="burger" aria-label="메뉴 열기" onclick="document.body.classList.toggle('mopen')"><i></i><i></i></button></div></header>
 <div class="mmenu" onclick="if(event.target.tagName==='A')document.body.classList.remove('mopen')">
- <a class="m" href="branall_about.html">ABOUT</a><a class="m" href="branall_reference.html">REFERENCE</a><a class="m" href="branall_channels.html">CHANNELS</a><a class="m" href="branall_reels.html">REELS</a><a class="m" href="branall_insight.html">INSIGHT</a><a class="m" href="branall_contact.html">CONTACT</a>
+ <a class="m" href="#about">ABOUT</a><a class="m" href="#ref">REFERENCE</a><a class="m" href="#channels">CHANNELS</a><a class="m" href="#reels">REELS</a><a class="m" href="#insight">INSIGHT</a><a class="m" href="#contact">CONTACT</a>
  <div class="mc"><a href="tel:070-4108-2296">TEL 070-4108-2296</a><a href="mailto:contact@branall.co.kr">contact@branall.co.kr</a><a href="https://www.instagram.com/branall_kr/" target="_blank">Instagram @branall_kr</a></div>
 </div>
 
@@ -359,7 +359,7 @@ const tabs=document.getElementById('tabs'),panel=document.getElementById('panel'
 const ORDER=['instagram-powerpage','instagram-explore','youtube-shorts','x-rt','influencer-shortform','x-seeding','naver-seeding','xiaohongshu'];
 CH.sort((a,b)=>ORDER.indexOf(a.u)-ORDER.indexOf(b.u));
 tabs.innerHTML=CH.map((c,i)=>(i===0?'<div class="tgrp en">VIRAL · 바이럴</div>':'')+(i===4?'<div class="tgrp en">INFLUENCER · 인플루언서</div>':'')+`<button role="tab" data-i="${i}" class="${i?'':'on'}">${c.t}</button>`).join('');
-function showCh(i){const c=CH[i];const imgSrc=c.v?(M+c.v+'.jpg'):CHIMG[c.u];panel.innerHTML=`<div class="media"><img src="${imgSrc}" alt="${c.t} 실제 집행 사례" loading="lazy"></div><div><div class="k">${c.k}</div><h3>${c.t}</h3><p>${c.p}</p><ul>${c.li.map(l=>`<li><b>${l[0]}</b>${l[1]}</li>`).join('')}</ul><p class="chnote2">${c.note}</p><div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn blue" href="branall_channel_${c.u}.html">자세히 보기 →</a><a class="btn line" href="https://infra.branall.co.kr/${c.u}" target="_blank">상품소개서</a></div></div>`;}
+function showCh(i){const c=CH[i];const imgSrc=c.v?(M+c.v+'.jpg'):CHIMG[c.u];panel.innerHTML=`<div class="media"><img src="${imgSrc}" alt="${c.t} 실제 집행 사례" loading="lazy"></div><div><div class="k">${c.k}</div><h3>${c.t}</h3><p>${c.p}</p><ul>${c.li.map(l=>`<li><b>${l[0]}</b>${l[1]}</li>`).join('')}</ul><p class="chnote2">${c.note}</p><div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn blue" target="_blank" href="https://infra.branall.co.kr/home/branall_channel_${c.u}.html">자세히 보기 →</a><a class="btn line" href="https://infra.branall.co.kr/${c.u}" target="_blank">상품소개서</a></div></div>`;}
 tabs.onclick=e=>{const i=e.target.dataset.i;if(i==null)return;tabs.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b===e.target));showCh(+i);};showCh(0);
 // reels
 const strip=document.getElementById('strip');strip.innerHTML=CLIPS.map((n,i)=>`<div class="tile" data-i="${i}"><video muted loop playsinline preload="none" poster="${M+n}.jpg" src="${M+n}.mp4"></video></div>`).join('');
@@ -377,4 +377,17 @@ document.querySelectorAll('.pick span').forEach(s=>s.onclick=()=>s.classList.tog
 // reveal
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(x=>io.observe(x));
+</script><script>
+document.addEventListener('click', function(e){
+ var a = e.target && e.target.closest ? e.target.closest('a[href^="#"]') : null;
+ if (!a) return;
+ var sel = a.getAttribute('href');
+ if (!sel || sel.length < 2) return;
+ var t = document.querySelector(sel);
+ if (!t) return;
+ e.preventDefault();
+ var y = Math.max(0, t.getBoundingClientRect().top + window.pageYOffset - 10);
+ if (window === window.parent) { window.scrollTo({ top: y, behavior: 'smooth' }); }
+ else { try { window.parent.postMessage({ type: 'scrollTo', y: y }, '*'); } catch (err) {} }
+}, true);
 </script></body></html>
