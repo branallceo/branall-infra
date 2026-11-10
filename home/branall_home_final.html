@@ -388,6 +388,6 @@ document.addEventListener('click', function(e){
  e.preventDefault();
  var y = Math.max(0, t.getBoundingClientRect().top + window.pageYOffset - 10);
  if (window === window.parent) { window.scrollTo({ top: y, behavior: 'smooth' }); }
- else { try { window.parent.postMessage({ type: 'scrollTo', y: y }, '*'); } catch (err) {} }
+ else { try { window.parent.postMessage('scrollTo:' + Math.round(y), '*'); } catch (err) {} }
 }, true);
 </script></body></html>
