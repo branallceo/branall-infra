@@ -244,14 +244,14 @@ const CASES=[
  {b:'BOSE KOREA',c:'LIFESTYLE',img:'070df9_0ae04ed5812b4b6b97b0fa46c1a8f76f',m:'350만회',ms:'SNS·틱톡·X 조회수',cap:'<b>신제품 부스터</b> 캠페인',logo:'cb9467_4525b53b0e894e3d8a015701567ccb75'},
  {b:'명랑핫도그',c:'F&B',img:'cb9467_3e6bc21acc1c4919940f009c6d4be773',m:'263만회',ms:'유튜브 쇼츠 조회수',cap:'<b>신메뉴</b> 바이럴 캠페인',logo:'cb9467_fe402a600cb74b87b80deb246aae69a4'},
  {b:'CELL FUSION C',c:'BEAUTY',img:'cb9467_b9c3121eb4d149bcba44288255864438',m:'검색량 2.7배',ms:'캠페인 기간 브랜드',cap:'<b>카밍다운크림</b> 바이럴 캠페인',logo:'cb9467_a6531a804a2248f1b9bbe3388b5c23d7'},
- {b:'언파',c:'LIFESTYLE',img:'cb9467_2d9657923dce44828c8098fdc2bb8b89',m:'230만회',ms:'틱톡·인스타그램 조회수',cap:'<b>차차치약</b> 바이럴 캠페인',logo:'cb9467_dc74e7b62cd244c98751b1d510b150e9'},
+ {b:'언파',c:'LIFESTYLE',img:'https://infra.branall.co.kr/home/img/unpa-chacha.jpg',m:'230만회',ms:'틱톡·인스타그램 조회수',cap:'<b>차차치약</b> 바이럴 캠페인',logo:'cb9467_dc74e7b62cd244c98751b1d510b150e9'},
  {b:'청기와타운',c:'F&B',img:'cb9467_4877ce1e8d6e40bba584a8ebe3ba09c3',m:'133.6만회',ms:'SNS 콘텐츠 조회수',cap:'<b>브랜드 인지도</b> 캠페인',logo:'cb9467_fb569ef70c3c4c938d7a1f0c3cc16bc9'},
- {b:'하이푸 풀라',c:'LIFESTYLE',img:'cb9467_8c95bbab21124fa9ba2fac159fb02506',m:'103만회',ms:'SNS 콘텐츠 조회수',cap:'<b>뷰티 디바이스</b> 바이럴 캠페인',logo:''},
+ {b:'하이푸 풀라',c:'LIFESTYLE',img:'https://infra.branall.co.kr/home/img/eoa-hifu.jpg',m:'103만회',ms:'SNS 콘텐츠 조회수',cap:'<b>뷰티 디바이스</b> 바이럴 캠페인',logo:''},
  {b:'요거트퍼플',c:'F&B',img:'cb9467_9eb96ce5ca444bc09d70d17bb63ff164',m:'검색량 +45%',ms:'월 6,780건 → 9,850건',cap:'<b>브랜드 인지도</b> 캠페인',logo:''},
  {b:'다비치렌즈',c:'LIFESTYLE',img:'cb9467_819782adb18e43209638ec862aa44497',m:'1·4·5위',ms:'네이버 "렌즈추천"',cap:'마이피픈과 함께한 <b>네이버 SEO</b> · "투명렌즈" 1·3위',logo:'cb9467_bbec9fcb57b047448d0f38acce4bfb0c'},
- {b:'CHARAN',c:'LIFESTYLE',img:'070df9_50557b6c35f34f1ca663e0ea94044b7a',m:'2,300명',ms:'인크레멘탈 신규 가입',cap:'<b>앱 설치·신규 가입</b> 캠페인',logo:''}];
+ {b:'CHARAN',c:'LIFESTYLE',img:'https://infra.branall.co.kr/home/img/charan-app.jpg',m:'2,300명',ms:'인크레멘탈 신규 가입',cap:'<b>앱 설치·신규 가입</b> 캠페인',logo:''}];
 const postsEl=document.getElementById('posts');
-postsEl.innerHTML=CASES.map((c,i)=>`<article class="post reveal" data-c="${c.c}"><div class="ph"><div class="av">${c.logo?`<img src="${L(c.logo)}" alt="">`:`<b>${c.b[0]}</b>`}</div><div><b>${c.b}</b><span>with BRANALL</span></div><span class="tag">${c.c==='F&B'?'F&amp;B':c.c}</span></div><div class="img"><img loading="lazy" src="${W(c.img,800,800)}" alt="${c.b}"></div><div class="pf"><div class="icons">${IC}</div><div class="metric">${c.m}<small>${c.ms}</small></div><div class="cap">${c.cap}</div></div></article>`).join('');
+postsEl.innerHTML=CASES.map((c,i)=>`<article class="post reveal" data-c="${c.c}"><div class="ph"><div class="av">${c.logo?`<img src="${L(c.logo)}" alt="">`:`<b>${c.b[0]}</b>`}</div><div><b>${c.b}</b><span>with BRANALL</span></div><span class="tag">${c.c==='F&B'?'F&amp;B':c.c}</span></div><div class="img"><img loading="lazy" src="${(c.img.startsWith('http')?c.img:W(c.img,800,800))}" alt="${c.b}"></div><div class="pf"><div class="icons">${IC}</div><div class="metric">${c.m}<small>${c.ms}</small></div><div class="cap">${c.cap}</div></div></article>`).join('');
 document.querySelectorAll('.post.reveal').forEach(el=>io.observe(el));
 document.getElementById('filters').onclick=e=>{const f=e.target.dataset.f;if(!f)return;document.querySelectorAll('#filters button').forEach(b=>b.classList.toggle('on',b===e.target));document.querySelectorAll('.post').forEach(p=>{p.classList.toggle('hide',f!=='all'&&p.dataset.c!==f);p.classList.add('in');});};
 </script>
