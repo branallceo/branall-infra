@@ -31,7 +31,7 @@ body.mopen .mmenu{transform:none}
 .mmenu a.m{font-size:34px;font-weight:800;letter-spacing:-.03em;padding:12px 0;border-bottom:1px solid var(--line)}
 .mmenu .mc{margin-top:auto;display:grid;gap:10px;font-size:15px;color:#c8c8cc}
 /* hero */
-.hero{position:relative;height:100vh;min-height:760px;overflow:hidden}
+.hero{position:relative;height:100vh;min-height:760px;max-height:900px;overflow:hidden}
 .wall{position:absolute;inset:-12% -4%;display:grid;grid-template-columns:repeat(6,1fr);gap:14px;transform:rotate(-6deg)}
 .col{display:flex;flex-direction:column;gap:14px;animation:up 70s linear infinite}
 .col:nth-child(even){animation-name:down;animation-duration:80s}
@@ -184,7 +184,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 @media(max-width:1100px){.proc{grid-template-columns:1fr 1fr}.about{grid-template-columns:1fr;gap:50px}.chan{grid-template-columns:1fr}.tabs{flex-direction:row;overflow-x:auto;border:0;gap:8px;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}.tabs button{border:1px solid #3a3a42;border-radius:999px;padding:10px 16px;font-size:15px;white-space:nowrap}.tabs button.on{background:#fff;color:#000}.tabs button.on:after{content:""}}
 @media(max-width:900px){
  header{padding:14px 20px}nav.main{display:none}.logo{font-size:21px}.burger{display:block}.hright .btn{display:none}
- .hero{min-height:700px}.wall{grid-template-columns:repeat(3,1fr);inset:-10% -20%}
+ .hero{min-height:700px;height:100vh;max-height:820px}.wall{grid-template-columns:repeat(3,1fr);inset:-10% -20%}
  .hcopy{left:20px;right:20px;bottom:170px}.hcopy p{font-size:16px}
  .chips{left:20px;right:20px;bottom:40px;flex-direction:row;overflow-x:auto;scrollbar-width:none}.chips::-webkit-scrollbar{display:none}
  .chip{min-width:150px;padding:10px 14px}.chip b{font-size:20px}.scrollhint{display:none}
