@@ -152,6 +152,8 @@ section.pad{padding:130px 48px}
 /* contact */
 .cta{position:relative;overflow:hidden;background:var(--blue);padding:120px 48px}
 .cta .in{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start;max-width:1344px;margin:0 auto}
+#formslot{min-height:620px}
+@media(max-width:900px){#formslot{min-height:640px}}
 .cta h2{font-size:clamp(46px,6vw,96px);line-height:1.02;font-weight:800;letter-spacing:-.04em}
 .cta .lead{font-size:19px;margin:26px 0 40px;opacity:.92;line-height:1.6}
 .contacts{display:grid;gap:12px;font-size:16px}
@@ -223,14 +225,13 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 
 @media(min-width:901px){.about .state{font-size:clamp(20px,1.85vw,29px);line-height:1.75}.state .sline{margin-bottom:0}}
 .panel{grid-template-columns:1fr !important}
-.cta .in{grid-template-columns:1fr !important;gap:30px}
-.cta{padding-bottom:40px !important}
+
 </style></head><body>
 <header><a class="logo en" href="#top" aria-label="BRANALL 홈">BRANALL<sup>®</sup></a>
-<nav class="main"><a href="#about">ABOUT</a><a href="#ref">REFERENCE</a><a href="#channels">CHANNELS</a><a href="#contents">CONTENTS</a><a href="#reels">REELS</a><a href="#insight">INSIGHT</a></nav>
+<nav class="main"><a href="https://infra.branall.co.kr/home/branall_about.html" target="_top">ABOUT</a><a href="https://infra.branall.co.kr/home/branall_reference.html" target="_top">REFERENCE</a><a href="https://infra.branall.co.kr/home/branall_channels.html" target="_top">CHANNELS</a><a href="#contents">CONTENTS</a><a href="https://infra.branall.co.kr/home/branall_reels.html" target="_top">REELS</a><a href="https://infra.branall.co.kr/home/branall_insight.html" target="_top">INSIGHT</a></nav>
 <div class="hright"><a class="btn blue" href="#contact">상담 신청</a><button class="burger" aria-label="메뉴 열기" onclick="document.body.classList.toggle('mopen')"><i></i><i></i></button></div></header>
 <div class="mmenu" onclick="if(event.target.tagName==='A')document.body.classList.remove('mopen')">
- <a class="m" href="#about">ABOUT</a><a class="m" href="#ref">REFERENCE</a><a class="m" href="#channels">CHANNELS</a><a class="m" href="#contents">CONTENTS</a><a class="m" href="#reels">REELS</a><a class="m" href="#insight">INSIGHT</a><a class="m" href="#contact">CONTACT</a>
+ <a class="m" href="https://infra.branall.co.kr/home/branall_about.html" target="_top">ABOUT</a><a class="m" href="https://infra.branall.co.kr/home/branall_reference.html" target="_top">REFERENCE</a><a class="m" href="https://infra.branall.co.kr/home/branall_channels.html" target="_top">CHANNELS</a><a class="m" href="#contents">CONTENTS</a><a class="m" href="https://infra.branall.co.kr/home/branall_reels.html" target="_top">REELS</a><a class="m" href="https://infra.branall.co.kr/home/branall_insight.html" target="_top">INSIGHT</a><a class="m" href="#contact">CONTACT</a>
  <div class="mc"><a href="tel:070-4108-2296">TEL 070-4108-2296</a><a href="mailto:contact@branall.co.kr">contact@branall.co.kr</a><a href="https://www.instagram.com/branall_kr/" target="_blank">Instagram @branall_kr</a></div>
 </div>
 
@@ -306,6 +307,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
    <a href="mailto:contact@branall.co.kr"><b>EMAIL</b><span>contact@branall.co.kr</span></a>
    <a href="https://www.instagram.com/branall_kr/" target="_blank"><b>INSTAGRAM</b><span>@branall_kr →</span></a>
   </div></div>
+ <div id="formslot" aria-hidden="true"></div>
  <div style="text-align:right"><a href="https://www.branall.co.kr/privacy">개인정보처리방침</a> · <a href="https://www.instagram.com/branall_kr/" target="_blank">Instagram</a> · <a href="https://pf.kakao.com/_QLwxlX" target="_blank">KakaoTalk</a><br>© 2026 BRANALL. All rights reserved.</div></footer>
 
 <a class="kakao" href="https://pf.kakao.com/_QLwxlX" target="_blank"><svg viewBox="0 0 24 24"><path fill="#191919" d="M12 3C6.5 3 2 6.6 2 11c0 2.8 1.9 5.3 4.7 6.7l-1 3.6c-.1.3.3.6.6.4l4.2-2.8c.5.1 1 .1 1.5.1 5.5 0 10-3.6 10-8S17.5 3 12 3z"/></svg>카톡 상담</a>
@@ -390,6 +392,18 @@ document.querySelectorAll('.pick span').forEach(s=>s.onclick=()=>s.classList.tog
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(x=>io.observe(x));
 </script><script>
+if (window !== window.parent) { document.addEventListener('DOMContentLoaded', function(){
+ var hdr=document.querySelector('header'), kk=document.querySelector('.kakao');
+ if(hdr){hdr.style.position='absolute';hdr.style.transition='top .15s linear';}
+ if(kk){kk.style.position='absolute';kk.style.bottom='auto';kk.style.transition='top .15s linear';}
+ var io=new IntersectionObserver(function(es){
+  var r=es[0].intersectionRect; if(!r||r.height<10)return;
+  var t=r.top;
+  if(hdr)hdr.style.top=t+'px';
+  if(kk)kk.style.top=(t+r.height-78)+'px';
+ },{threshold:Array.from({length:501},function(_,i){return i/500})});
+ io.observe(document.documentElement);
+}); }
 function fitZoom(){var w=window.innerWidth,z;if(w>900){z=w/1265}else{z=w/375}document.documentElement.style.zoom=z;}
 try{fitZoom();window.addEventListener('resize',fitZoom);}catch(e){}
 document.addEventListener('click', function(e){
