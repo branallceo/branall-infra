@@ -220,6 +220,11 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 .state .sline:last-child{margin-bottom:0}
 .state .sline.dim{color:#6e6e78}
 @media(max-width:900px){.about .state{font-size:24px;line-height:1.5}.state .sline{margin-bottom:14px}}
+@media(max-width:900px){.dbr{display:none}}
+@media(min-width:901px){.about .state{font-size:clamp(26px,2.5vw,38px)}}
+.panel{grid-template-columns:1fr !important}
+.cta .in{grid-template-columns:1fr !important;gap:30px}
+.cta{padding-bottom:40px !important}
 </style></head><body>
 <header><a class="logo en" href="#top" aria-label="BRANALL 홈">BRANALL<sup>®</sup></a>
 <nav class="main"><a href="#about">ABOUT</a><a href="#ref">REFERENCE</a><a href="#channels">CHANNELS</a><a href="#reels">REELS</a><a href="#insight">INSIGHT</a></nav>
@@ -239,18 +244,19 @@ footer a{text-decoration:underline;text-underline-offset:3px}
  <div class="scrollhint en">SCROLL</div>
 </section>
 
-<div class="logos" aria-label="함께한 브랜드"><div class="ltrack" id="lt1"></div><div class="ltrack rev" id="lt2"></div></div>
 
 <section class="pad" id="about"><div class="about">
  <div class="reveal"><span class="kick">ABOUT BRANALL</span>
   <p class="state"><span class="sline">브랜올은 <b>바이럴을 직접 <span style="white-space:nowrap;color:inherit">집행하는 팀</span></b>입니다.</span>
 <span class="sline dim">기획부터 집행, 결과 보고까지 한 팀이 합니다.</span>
-<span class="sline">파워페이지, 쇼츠 채널, 크리에이터 네트워크를 직접 운영하며 브랜드가 <b>피드의 화제</b>가 되도록 만듭니다.</span></p></div>
+<span class="sline">파워페이지, 쇼츠 채널, 크리에이터 네트워크를<br class="dbr">직접 운영하며 브랜드가 <b>피드의 화제</b>가 되도록<br class="dbr">만듭니다.</span></p></div>
  <div class="pillars reveal">
   <div class="pil"><div class="no en">01</div><h3>전략<small>THINK STRATEGY</small></h3><p>브랜드의 목표와 타깃에 맞춰 어떤 매체에서, 어떤 이야기로 퍼뜨릴지 설계합니다.</p></div>
   <div class="pil"><div class="no en">02</div><h3>실행<small>BUILD EXECUTION</small></h3><p>직접 운영하는 매체와 검증된 1만 명+ 인플루언서 풀로 콘텐츠를 제작하고 집행합니다.</p></div>
   <div class="pil"><div class="no en">03</div><h3>데이터<small>GROW WITH DATA</small></h3><p>조회수, 반응, 검색량 변화를 숫자로 정리해 다음 캠페인에 반영합니다.</p></div>
  </div></div></section>
+
+<div class="logos" aria-label="함께한 브랜드"><div class="ltrack" id="lt1"></div><div class="ltrack rev" id="lt2"></div></div>
 
 <section class="pad" id="ref" style="padding-top:20px"><div class="sh reveal"><h2><small>REFERENCE</small>숫자로 남은<br>브랜올의 피드</h2>
  <div class="filters" id="filters"><button class="on" data-f="all">전체</button><button data-f="BEAUTY">뷰티</button><button data-f="F&B">F&amp;B</button><button data-f="LIFESTYLE">라이프스타일</button></div></div>
@@ -297,16 +303,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
    <a href="mailto:contact@branall.co.kr"><b>EMAIL</b><span>contact@branall.co.kr</span></a>
    <a href="https://www.instagram.com/branall_kr/" target="_blank"><b>INSTAGRAM</b><span>@branall_kr →</span></a>
   </div></div>
- <div style="background:#fff;border-radius:22px;padding:40px 34px;display:flex;flex-direction:column;gap:14px;justify-content:center">
-  <h3 style="color:#0b0b0d;font-size:24px;letter-spacing:-.02em">프로젝트 문의</h3>
-  <p style="color:#555;font-size:15px;line-height:1.7">바로 아래 문의 양식에 남겨주시면<br>24시간 내 담당자가 연락드립니다.</p>
-  <a class="btn blue" href="#" onclick="try{parent.postMessage('scrollToForm','*')}catch(e){};return false" style="justify-content:center">문의 양식 작성하기 ↓</a>
-  <a class="btn" href="https://pf.kakao.com/_QLwxlX" target="_blank" style="background:#FEE500;color:#191919;justify-content:center">카카오톡으로 바로 상담</a>
- </div></div></section>
-</main>
-
-<footer><div><div class="flogo en">BRANALL<sup style="font-size:.4em">®</sup></div>대표 이규태 | 사업자등록번호 115-65-00596<br>인천광역시 연수구 인천타워대로 송도센트로드 B동 3406호<br>TEL 070-4108-2296 | contact@branall.co.kr</div>
-<div style="text-align:right"><a href="https://www.branall.co.kr/privacy">개인정보처리방침</a> · <a href="https://www.instagram.com/branall_kr/" target="_blank">Instagram</a> · <a href="https://pf.kakao.com/_QLwxlX" target="_blank">KakaoTalk</a><br>© 2026 BRANALL. All rights reserved.</div></footer>
+ <div style="text-align:right"><a href="https://www.branall.co.kr/privacy">개인정보처리방침</a> · <a href="https://www.instagram.com/branall_kr/" target="_blank">Instagram</a> · <a href="https://pf.kakao.com/_QLwxlX" target="_blank">KakaoTalk</a><br>© 2026 BRANALL. All rights reserved.</div></footer>
 
 <a class="kakao" href="https://pf.kakao.com/_QLwxlX" target="_blank"><svg viewBox="0 0 24 24"><path fill="#191919" d="M12 3C6.5 3 2 6.6 2 11c0 2.8 1.9 5.3 4.7 6.7l-1 3.6c-.1.3.3.6.6.4l4.2-2.8c.5.1 1 .1 1.5.1 5.5 0 10-3.6 10-8S17.5 3 12 3z"/></svg>카톡 상담</a>
 <div class="lb" id="lb"><span class="x" onclick="lbClose()">CLOSE ✕</span><button class="lr l" onclick="lbStep(-1)" aria-label="이전">←</button><video id="lbv" controls playsinline></video><button class="lr r" onclick="lbStep(1)" aria-label="다음">→</button><span class="c" id="lbc"></span></div>
@@ -359,7 +356,7 @@ const tabs=document.getElementById('tabs'),panel=document.getElementById('panel'
 const ORDER=['instagram-powerpage','instagram-explore','youtube-shorts','x-rt','influencer-shortform','x-seeding','naver-seeding','xiaohongshu'];
 CH.sort((a,b)=>ORDER.indexOf(a.u)-ORDER.indexOf(b.u));
 tabs.innerHTML=CH.map((c,i)=>(i===0?'<div class="tgrp en">VIRAL · 바이럴</div>':'')+(i===4?'<div class="tgrp en">INFLUENCER · 인플루언서</div>':'')+`<button role="tab" data-i="${i}" class="${i?'':'on'}">${c.t}</button>`).join('');
-function showCh(i){const c=CH[i];const imgSrc=c.v?(M+c.v+'.jpg'):CHIMG[c.u];panel.innerHTML=`<div class="media"><img src="${imgSrc}" alt="${c.t} 실제 집행 사례" loading="lazy"></div><div><div class="k">${c.k}</div><h3>${c.t}</h3><p>${c.p}</p><ul>${c.li.map(l=>`<li><b>${l[0]}</b>${l[1]}</li>`).join('')}</ul><p class="chnote2">${c.note}</p><div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn blue" target="_blank" href="https://infra.branall.co.kr/home/branall_channel_${c.u}.html">자세히 보기 →</a><a class="btn line" href="https://infra.branall.co.kr/${c.u}" target="_blank">상품소개서</a></div></div>`;}
+function showCh(i){const c=CH[i];const imgSrc=c.v?(M+c.v+'.jpg'):CHIMG[c.u];panel.innerHTML=`<div><div class="k">${c.k}</div><h3>${c.t}</h3><p>${c.p}</p><ul>${c.li.map(l=>`<li><b>${l[0]}</b>${l[1]}</li>`).join('')}</ul><p class="chnote2">${c.note}</p><div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn blue" target="_blank" href="https://infra.branall.co.kr/home/branall_channel_${c.u}.html">자세히 보기 →</a><a class="btn line" href="https://infra.branall.co.kr/${c.u}" target="_blank">상품소개서</a></div></div>`;}
 tabs.onclick=e=>{const i=e.target.dataset.i;if(i==null)return;tabs.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b===e.target));showCh(+i);};showCh(0);
 // reels
 const strip=document.getElementById('strip');strip.innerHTML=CLIPS.map((n,i)=>`<div class="tile" data-i="${i}"><video muted loop playsinline preload="none" poster="${M+n}.jpg" src="${M+n}.mp4"></video></div>`).join('');
