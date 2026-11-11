@@ -227,10 +227,10 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 .cta{padding-bottom:40px !important}
 </style></head><body>
 <header><a class="logo en" href="#top" aria-label="BRANALL 홈">BRANALL<sup>®</sup></a>
-<nav class="main"><a href="#about">ABOUT</a><a href="#ref">REFERENCE</a><a href="#channels">CHANNELS</a><a href="#reels">REELS</a><a href="#insight">INSIGHT</a></nav>
+<nav class="main"><a href="#about">ABOUT</a><a href="#ref">REFERENCE</a><a href="#channels">CHANNELS</a><a href="#contents">CONTENTS</a><a href="#reels">REELS</a><a href="#insight">INSIGHT</a></nav>
 <div class="hright"><a class="btn blue" href="#contact">상담 신청</a><button class="burger" aria-label="메뉴 열기" onclick="document.body.classList.toggle('mopen')"><i></i><i></i></button></div></header>
 <div class="mmenu" onclick="if(event.target.tagName==='A')document.body.classList.remove('mopen')">
- <a class="m" href="#about">ABOUT</a><a class="m" href="#ref">REFERENCE</a><a class="m" href="#channels">CHANNELS</a><a class="m" href="#reels">REELS</a><a class="m" href="#insight">INSIGHT</a><a class="m" href="#contact">CONTACT</a>
+ <a class="m" href="#about">ABOUT</a><a class="m" href="#ref">REFERENCE</a><a class="m" href="#channels">CHANNELS</a><a class="m" href="#contents">CONTENTS</a><a class="m" href="#reels">REELS</a><a class="m" href="#insight">INSIGHT</a><a class="m" href="#contact">CONTACT</a>
  <div class="mc"><a href="tel:070-4108-2296">TEL 070-4108-2296</a><a href="mailto:contact@branall.co.kr">contact@branall.co.kr</a><a href="https://www.instagram.com/branall_kr/" target="_blank">Instagram @branall_kr</a></div>
 </div>
 
@@ -269,6 +269,9 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 
 <section class="pad" id="channels" style="padding-top:20px"><div class="sh reveal"><h2><small>CHANNELS</small>브랜드가 터지는 곳,<br>직접 운영합니다</h2><a class="btn line" href="https://infra.branall.co.kr/" target="_blank">매체 인프라 전체 보기 →</a></div>
  <div class="chan"><div class="tabs" id="tabs" role="tablist"></div><div class="panel" id="panel"></div></div></section>
+
+<section class="pad" id="contents" style="padding-top:40px"><div class="sh reveal"><h2><small>CONTENTS</small>채널에 올릴 콘텐츠,<br>직접 만듭니다</h2></div>
+ <div class="chan"><div class="tabs" id="tabs2" role="tablist"></div><div class="panel" id="panel2"></div></div></section>
 
 <section id="reels" style="padding:20px 0 130px"><div class="sh reveal" style="padding:0 48px"><h2><small>REELS</small>실제 집행한 숏폼</h2><div style="display:flex;gap:18px;align-items:center"><span style="color:var(--mute);font-size:15px">누르면 크게 재생됩니다</span><div class="snav"><button onclick="sc(-1)" aria-label="이전">←</button><button onclick="sc(1)" aria-label="다음">→</button></div></div></div><div class="strip" id="strip"></div></section>
 
@@ -358,6 +361,18 @@ CH.sort((a,b)=>ORDER.indexOf(a.u)-ORDER.indexOf(b.u));
 tabs.innerHTML=CH.map((c,i)=>(i===0?'<div class="tgrp en">VIRAL · 바이럴</div>':'')+(i===4?'<div class="tgrp en">INFLUENCER · 인플루언서</div>':'')+`<button role="tab" data-i="${i}" class="${i?'':'on'}">${c.t}</button>`).join('');
 function showCh(i){const c=CH[i];const imgSrc=c.v?(M+c.v+'.jpg'):CHIMG[c.u];panel.innerHTML=`<div><div class="k">${c.k}</div><h3>${c.t}</h3><p>${c.p}</p><ul>${c.li.map(l=>`<li><b>${l[0]}</b>${l[1]}</li>`).join('')}</ul><p class="chnote2">${c.note}</p><div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn blue" target="_blank" href="https://infra.branall.co.kr/home/branall_channel_${c.u}.html">자세히 보기 →</a><a class="btn line" href="https://infra.branall.co.kr/${c.u}" target="_blank">상품소개서</a></div></div>`;}
 tabs.onclick=e=>{const i=e.target.dataset.i;if(i==null)return;tabs.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b===e.target));showCh(+i);};showCh(0);
+const CT=[
+{"t":"AI 비주얼","k":"CONTENT","p":"AI로 제작하는 스틸 이미지 · 모션 · 숏폼 영상. 촬영 없이 브랜드 비주얼을 빠르게 만듭니다.","li":[["형태","스틸 이미지 · 스틸+모션 · 숏폼 영상"],["활용","SNS 광고 소재 · 상세페이지 비주얼"],["비용","구성별 상담 시 안내"]],"note":"브랜드 톤에 맞춘 시안 협의 후 제작에 들어갑니다."},
+{"t":"SNS 카드뉴스","k":"CONTENT","p":"브랜드 계정에 바로 올릴 수 있는 카드뉴스 소재를 제작해 납품합니다.","li":[["구성","이미지 5장 기준"],["납품","발행 없이 소재 제공"],["A/S","30일 내 삭제 시 A/S"],["비용","상담 시 안내"]],"note":"발행이 필요한 경우 바이럴 채널과 묶어 진행할 수 있습니다."},
+{"t":"바이럴 숏폼 제작","k":"CONTENT","p":"네이버클립 · 쇼츠 · 릴스 · 틱톡용 숏폼 소재를 기획부터 편집까지 제작합니다.","li":[["용도","네이버클립 · 쇼츠 · 릴스 · 틱톡"],["납품","발행 없이 최종본 제공"],["비용","상담 시 안내"]],"note":"자사 채널 집행 상품과 결합하면 배포까지 한 번에 진행됩니다."},
+{"t":"브랜드 필름","k":"CONTENT","p":"브랜드 공식 영상을 기획 · 촬영 · 편집까지 턴키로 제작합니다.","li":[["진행","별도 협의 · 계약금 50% 선입금"],["수정","영상별 2회 포함"],["원본 소스","제공 별도 협의"]],"note":"규모와 연출에 따라 견적이 달라져 사전 미팅 후 안내드립니다."},
+{"t":"촬영 · 편집","k":"CONTENT","p":"셀프형부터 올리브영 · 다이소 방문형, 팝업 현장 영상까지 촬영과 편집을 대행합니다.","li":[["형태","셀프형 · 방문형(올리브영 · 다이소) · 팝업 방문영상"],["조건","얼굴 노출 별도 협의 · 제품 비용 별도"],["납품","발행 없이 소재 제공"]],"note":"촬영 소재는 바이럴 · 인플루언서 캠페인에 그대로 활용할 수 있습니다."},
+{"t":"전략 제안 · 컨설팅","k":"MEDIA MIX","p":"RFP 확인부터 기획안, 사전 미팅, 전담 배정까지. 캠페인 전체 그림을 함께 설계합니다.","li":[["프로세스","RFP 확인 → 기획안 → 사전 미팅 → 담당자 배정"],["범위","매체 조합 설계 · 예산 배분"],["비용","계약 후 안내"]],"note":"개별 캠페인 계약과 전체 캠페인 계약 모두 가능합니다."},
+{"t":"퍼포먼스 마케팅","k":"MEDIA MIX","p":"메타 · 구글 · 네이버 광고 운영을 바이럴 소재와 결합해 전환까지 연결합니다.","li":[["매체","메타 · 구글 · 네이버"],["진행 단위","상담 시 안내"],["확장","옥외 · 방송광고 별도 협의"]],"note":"바이럴로 검증된 소재를 퍼포먼스 광고에 활용해 효율을 높입니다."}];
+const tabs2=document.getElementById('tabs2'),panel2=document.getElementById('panel2');
+tabs2.innerHTML=CT.map((c,i)=>(i===0?'<div class="tgrp en">CONTENT · 콘텐츠 제작</div>':'')+(i===5?'<div class="tgrp en">MEDIA MIX · 미디어믹스</div>':'')+`<button role="tab" data-i="${i}" class="${i?'':'on'}">${c.t}</button>`).join('');
+function showCt(i){const c=CT[i];panel2.innerHTML=`<div><div class="k">${c.k}</div><h3>${c.t}</h3><p>${c.p}</p><ul>${c.li.map(l=>`<li><b>${l[0]}</b>${l[1]}</li>`).join('')}</ul><p class="chnote2">${c.note}</p><div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn blue" href="#contact">상담 신청 →</a></div></div>`;}
+tabs2.onclick=e=>{const i=e.target.dataset.i;if(i==null)return;tabs2.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b===e.target));showCt(+i);};showCt(0);
 // reels
 const strip=document.getElementById('strip');strip.innerHTML=CLIPS.map((n,i)=>`<div class="tile" data-i="${i}"><video muted loop playsinline preload="none" poster="${M+n}.jpg" src="${M+n}.mp4"></video></div>`).join('');
 strip.querySelectorAll('.tile').forEach(t=>{const v=t.querySelector('video');if(!isM){t.onmouseenter=()=>v.play().catch(()=>{});t.onmouseleave=()=>v.pause();}t.onclick=()=>lbOpen(+t.dataset.i);});
