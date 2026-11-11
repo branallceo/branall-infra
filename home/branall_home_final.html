@@ -390,6 +390,8 @@ document.querySelectorAll('.pick span').forEach(s=>s.onclick=()=>s.classList.tog
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(x=>io.observe(x));
 </script><script>
+function fitZoom(){var w=window.innerWidth,z;if(w>900){z=w/1265}else{z=w/375}document.documentElement.style.zoom=z;}
+try{fitZoom();window.addEventListener('resize',fitZoom);}catch(e){}
 document.addEventListener('click', function(e){
  var a = e.target && e.target.closest ? e.target.closest('a[href^="#"]') : null;
  if (!a) return;
@@ -398,8 +400,9 @@ document.addEventListener('click', function(e){
  var t = document.querySelector(sel);
  if (!t) return;
  e.preventDefault();
- var y = Math.max(0, t.getBoundingClientRect().top + window.pageYOffset - 10);
+ var z = parseFloat(document.documentElement.style.zoom)||1;
+ var y = Math.max(0, (t.getBoundingClientRect().top + window.pageYOffset - 10) * z);
  if (window === window.parent) { window.scrollTo({ top: y, behavior: 'smooth' }); }
- else { try { window.parent.postMessage('scrollTo:' + Math.round(y) + ':' + sel + ':' + Math.round(document.body.scrollHeight) + ':' + window.innerWidth, '*'); } catch (err) {} }
+ else { try { window.parent.postMessage('scrollTo:' + Math.round(y) + ':' + sel + ':' + Math.round(document.body.scrollHeight * z) + ':' + window.innerWidth, '*'); } catch (err) {} }
 }, true);
 </script></body></html>
