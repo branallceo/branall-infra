@@ -119,7 +119,7 @@ section.pad{padding:130px 48px}
 .tabs{display:flex;flex-direction:column;border-top:1px solid var(--line)}
 .tabs button{all:unset;cursor:pointer;padding:22px 4px;border-bottom:1px solid var(--line);font-size:20px;font-weight:700;display:flex;justify-content:space-between;color:#8c8c94;transition:.2s}
 .tabs button:hover{color:#ddd}.tabs button.on{color:#fff}.tabs button.on:after{content:"●";color:var(--blue)}
-.panel{display:grid;grid-template-columns:300px 1fr;gap:36px;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:28px;min-height:590px}
+.panel{display:grid;grid-template-columns:300px 1fr;gap:36px;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:28px;min-height:0}
 .panel .media{aspect-ratio:9/16;border-radius:16px;overflow:hidden;background:#000;align-self:start}
 .panel .media video,.panel .media img{width:100%;height:100%;object-fit:cover;display:block}
 .panel .media.wide{aspect-ratio:auto;background:none}.panel .media.wide img{height:auto;border-radius:16px}
@@ -267,10 +267,10 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 <section class="pad" id="clients" style="padding-top:20px"><div class="sh reveal"><h2><small>CLIENTS</small>매년 200개+ 브랜드가<br>브랜올과 함께합니다</h2><p style="color:var(--mute);font-size:16px;max-width:400px;line-height:1.65">뷰티부터 F&amp;B 프랜차이즈, 라이프스타일, 주류, 플랫폼까지. 다양한 업종의 브랜드와 피드의 화제를 만들어 왔습니다.</p></div>
  <div class="clients reveal" id="clientgrid"></div></section>
 
-<section class="pad" id="channels" style="padding-top:20px"><div class="sh reveal"><h2><small>CHANNELS</small>브랜드가 터지는 곳,<br>직접 운영합니다</h2><a class="btn line" href="https://infra.branall.co.kr/" target="_blank">매체 인프라 전체 보기 →</a></div>
+<section class="pad" id="channels" style="padding-top:20px;padding-bottom:40px"><div class="sh reveal"><h2><small>CHANNELS</small>브랜드가 터지는 곳,<br>직접 운영합니다</h2><a class="btn line" href="https://infra.branall.co.kr/" target="_blank">매체 인프라 전체 보기 →</a></div>
  <div class="chan"><div class="tabs" id="tabs" role="tablist"></div><div class="panel" id="panel"></div></div></section>
 
-<section class="pad" id="contents" style="padding-top:40px"><div class="sh reveal"><h2><small>CONTENTS</small>채널에 올릴 콘텐츠,<br>직접 만듭니다</h2></div>
+<section class="pad" id="contents" style="padding-top:30px"><div class="sh reveal"><h2><small>CONTENTS</small>채널에 올릴 콘텐츠,<br>직접 만듭니다</h2></div>
  <div class="chan"><div class="tabs" id="tabs2" role="tablist"></div><div class="panel" id="panel2"></div></div></section>
 
 <section id="reels" style="padding:20px 0 130px"><div class="sh reveal" style="padding:0 48px"><h2><small>REELS</small>실제 집행한 숏폼</h2><div style="display:flex;gap:18px;align-items:center"><span style="color:var(--mute);font-size:15px">누르면 크게 재생됩니다</span><div class="snav"><button onclick="sc(-1)" aria-label="이전">←</button><button onclick="sc(1)" aria-label="다음">→</button></div></div></div><div class="strip" id="strip"></div></section>
