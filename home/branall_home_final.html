@@ -228,10 +228,10 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 
 </style></head><body>
 <header><a class="logo en" href="#top" aria-label="BRANALL 홈">BRANALL<sup>®</sup></a>
-<nav class="main"><a href="https://infra.branall.co.kr/home/branall_about.html" target="_top">ABOUT</a><a href="https://infra.branall.co.kr/home/branall_reference.html" target="_top">REFERENCE</a><a href="https://infra.branall.co.kr/home/branall_channels.html" target="_top">CHANNELS</a><a href="#contents">CONTENTS</a><a href="https://infra.branall.co.kr/home/branall_reels.html" target="_top">REELS</a><a href="https://infra.branall.co.kr/home/branall_insight.html" target="_top">INSIGHT</a></nav>
+<nav class="main"><a href="https://infra.branall.co.kr/home/branall_about.html" target="_top">ABOUT</a><a href="https://infra.branall.co.kr/home/branall_reference.html" target="_top">REFERENCE</a><a href="https://infra.branall.co.kr/home/branall_channels.html" target="_top">CHANNELS</a><a href="https://infra.branall.co.kr/home/branall_contents.html" target="_top">CONTENTS</a><a href="https://infra.branall.co.kr/home/branall_reels.html" target="_top">REELS</a><a href="https://infra.branall.co.kr/home/branall_insight.html" target="_top">INSIGHT</a></nav>
 <div class="hright"><a class="btn blue" href="#contact">상담 신청</a><button class="burger" aria-label="메뉴 열기" onclick="document.body.classList.toggle('mopen')"><i></i><i></i></button></div></header>
 <div class="mmenu" onclick="if(event.target.tagName==='A')document.body.classList.remove('mopen')">
- <a class="m" href="https://infra.branall.co.kr/home/branall_about.html" target="_top">ABOUT</a><a class="m" href="https://infra.branall.co.kr/home/branall_reference.html" target="_top">REFERENCE</a><a class="m" href="https://infra.branall.co.kr/home/branall_channels.html" target="_top">CHANNELS</a><a class="m" href="#contents">CONTENTS</a><a class="m" href="https://infra.branall.co.kr/home/branall_reels.html" target="_top">REELS</a><a class="m" href="https://infra.branall.co.kr/home/branall_insight.html" target="_top">INSIGHT</a><a class="m" href="#contact">CONTACT</a>
+ <a class="m" href="https://infra.branall.co.kr/home/branall_about.html" target="_top">ABOUT</a><a class="m" href="https://infra.branall.co.kr/home/branall_reference.html" target="_top">REFERENCE</a><a class="m" href="https://infra.branall.co.kr/home/branall_channels.html" target="_top">CHANNELS</a><a class="m" href="https://infra.branall.co.kr/home/branall_contents.html" target="_top">CONTENTS</a><a class="m" href="https://infra.branall.co.kr/home/branall_reels.html" target="_top">REELS</a><a class="m" href="https://infra.branall.co.kr/home/branall_insight.html" target="_top">INSIGHT</a><a class="m" href="#contact">CONTACT</a>
  <div class="mc"><a href="tel:070-4108-2296">TEL 070-4108-2296</a><a href="mailto:contact@branall.co.kr">contact@branall.co.kr</a><a href="https://www.instagram.com/branall_kr/" target="_blank">Instagram @branall_kr</a></div>
 </div>
 
@@ -414,9 +414,8 @@ document.addEventListener('click', function(e){
  var t = document.querySelector(sel);
  if (!t) return;
  e.preventDefault();
- var z = parseFloat(document.documentElement.style.zoom)||1;
- var y = Math.max(0, (t.getBoundingClientRect().top + window.pageYOffset - 10) * z);
+ var y = Math.max(0, t.getBoundingClientRect().top + window.pageYOffset - 10);
  if (window === window.parent) { window.scrollTo({ top: y, behavior: 'smooth' }); }
- else { try { window.parent.postMessage('scrollTo:' + Math.round(y) + ':' + sel + ':' + Math.round(document.body.scrollHeight * z) + ':' + window.innerWidth, '*'); } catch (err) {} }
+ else { try { window.parent.postMessage('scrollTo:' + Math.round(y) + ':' + sel + ':' + Math.round(document.body.scrollHeight) + ':' + window.innerWidth, '*'); } catch (err) {} }
 }, true);
 </script></body></html>
