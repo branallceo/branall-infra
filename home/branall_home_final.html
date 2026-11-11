@@ -54,12 +54,12 @@ body.mopen .mmenu{transform:none}
 .scrollhint:after{content:"";width:1px;height:28px;background:linear-gradient(#fff8,transparent);animation:sh 1.6s infinite}
 @keyframes sh{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 /* logos */
-.logos{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:28px 0;position:relative}
+.logos{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:44px 0;position:relative;margin-bottom:40px}
 .logos:before,.logos:after{content:"";position:absolute;top:0;bottom:0;width:120px;z-index:2}
 .logos:before{left:0;background:linear-gradient(90deg,var(--bg),transparent)}.logos:after{right:0;background:linear-gradient(-90deg,var(--bg),transparent)}
 .ltrack{display:flex;gap:80px;width:max-content;animation:mq 40s linear infinite;align-items:center}
 .ltrack img{height:30px;opacity:.7;transition:opacity .2s}.ltrack img.sq{height:46px}.ltrack img:hover{opacity:1}
-.ltrack.rev{animation-direction:reverse;animation-duration:55s;margin-top:26px}
+.ltrack.rev{animation-direction:reverse;animation-duration:55s;margin-top:34px}
 .logos:hover .ltrack{animation-play-state:paused}
 /* clients grid */
 .clients{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line)}
@@ -221,7 +221,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 .state .sline.dim{color:#6e6e78}
 @media(max-width:900px){.about .state{font-size:24px;line-height:1.5}.state .sline{margin-bottom:14px}}
 @media(max-width:900px){.dbr{display:none}}
-@media(min-width:901px){.about .state{font-size:clamp(26px,2.5vw,38px)}}
+@media(min-width:901px){.about .state{font-size:clamp(20px,1.85vw,29px);line-height:1.6}.state .sline{margin-bottom:14px}}
 .panel{grid-template-columns:1fr !important}
 .cta .in{grid-template-columns:1fr !important;gap:30px}
 .cta{padding-bottom:40px !important}
@@ -249,7 +249,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
  <div class="reveal"><span class="kick">ABOUT BRANALL</span>
   <p class="state"><span class="sline">브랜올은 <b>바이럴을 직접 <span style="white-space:nowrap;color:inherit">집행하는 팀</span></b>입니다.</span>
 <span class="sline dim">기획부터 집행, 결과 보고까지 한 팀이 합니다.</span>
-<span class="sline">파워페이지, 쇼츠 채널, 크리에이터 네트워크를<br class="dbr">직접 운영하며 브랜드가 <b>피드의 화제</b>가 되도록<br class="dbr">만듭니다.</span></p></div>
+<span class="sline">파워페이지, 쇼츠 채널, 크리에이터 네트워크를<br class="dbr">직접 운영하며 브랜드가 <b>피드의 화제</b>가 되도록 만듭니다.</span></p></div>
  <div class="pillars reveal">
   <div class="pil"><div class="no en">01</div><h3>전략<small>THINK STRATEGY</small></h3><p>브랜드의 목표와 타깃에 맞춰 어떤 매체에서, 어떤 이야기로 퍼뜨릴지 설계합니다.</p></div>
   <div class="pil"><div class="no en">02</div><h3>실행<small>BUILD EXECUTION</small></h3><p>직접 운영하는 매체와 검증된 1만 명+ 인플루언서 풀로 콘텐츠를 제작하고 집행합니다.</p></div>
