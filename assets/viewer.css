@@ -54,6 +54,12 @@ body.debug .hot{background:rgba(255,106,61,.25);outline:1px solid #ff6a3d}
 .bar svg{width:20px;height:20px}
 .menu-btn{display:none !important}
 
+/* PDF 다운로드 */
+.dl-side{display:flex;align-items:center;justify-content:center;gap:6px;margin:0 6px;height:36px;border-radius:9px;background:var(--navy);color:#fff !important;font-size:13px;font-weight:600}
+.dl-side:hover{background:var(--navy-2)}
+.dl-side svg{width:16px;height:16px}
+.mdl{display:none}
+
 .foot{position:absolute;right:18px;bottom:30px;font-size:11px;color:#a4a9bd;letter-spacing:.02em}
 
 /* ---------- 모바일: 세로 스크롤 ---------- */
@@ -72,6 +78,9 @@ body.debug .hot{background:rgba(255,106,61,.25);outline:1px solid #ff6a3d}
   .mtop .count{font-size:12.5px}
   .mtop button{width:34px;height:34px;display:grid;place-items:center;border-radius:8px;background:#fff;border:1px solid var(--line)}
   .mtop svg{width:18px;height:18px}
+  .mtop .mdl{display:flex;align-items:center;gap:4px;height:34px;padding:0 10px;border-radius:8px;background:var(--navy);color:#fff;font-size:12.5px;font-weight:600;flex:none}
+  .mtop .mdl svg{width:16px;height:16px}
+  .side .dl-side{display:none}
   .scroll-list{display:flex;flex-direction:column;gap:14px;padding:14px 12px 40px}
   .scroll-list .slide{border-radius:10px;width:100%}
   .scroll-list .pno{font-size:11px;color:var(--muted);margin:-6px 2px 0;text-align:right}

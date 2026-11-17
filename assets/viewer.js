@@ -13,6 +13,9 @@
   var big = function (i) { return 'img/' + slug + '-' + i + '.webp' + VER; };
   var small = function (i) { return 'img/' + slug + '-t' + i + '.jpg' + VER; };
   var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+  // PDF 다운로드: pdf/{doc}.pdf (소개서 내용을 바꾸면 PDF도 다시 만들어 올려야 함, README 참고)
+  var pdfUrl = 'pdf/' + slug + '.pdf' + VER;
+  var pdfName = (slug === 'main' ? '브랜올 매체 인프라' : D.title).replace(/[\\/:*?"<>|]/g, '') + '.pdf';
   var HTML = window.DECK_HTML && window.DECK_HTML[slug];
   var MOB = window.DECK_MOBILE && window.DECK_MOBILE[slug];
   var docLinks = function (h) { return h.replace(/\{\{DOC:([\w-]+)\}\}/g, function (m, s) { return docUrl(s); }); };
@@ -33,7 +36,8 @@
     next: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>',
     full: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>',
     menu: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>',
-    home: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M15 18l-6-6 6-6"/></svg>'
+    home: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M15 18l-6-6 6-6"/></svg>',
+    dl: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>'
   };
 
   /* ---------- 화면 뼈대 ---------- */
@@ -44,11 +48,12 @@
       '<div class="brand"><span class="logo">BRANALL</span><span class="count" id="cnt"></span></div>' +
       '<div class="doc-title"></div>' +
       (slug !== 'main' ? '<a class="back" href="' + docUrl('main') + '">' + ICON.home + '브랜올 매체 인프라 전체 보기</a>' : '') +
+      '<a class="dl-side" href="' + pdfUrl + '" download="' + pdfName + '">' + ICON.dl + 'PDF 다운로드</a>' +
       '<nav class="thumbs" id="thumbs" aria-label="페이지 목록"></nav>' +
     '</aside>' +
     '<div class="scrim" id="scrim"></div>' +
     '<main class="main">' +
-      '<div class="mtop"><button id="mmenu" aria-label="목차">' + ICON.menu + '</button><div class="t"></div><span class="count" id="mcnt"></span></div>' +
+      '<div class="mtop"><button id="mmenu" aria-label="목차">' + ICON.menu + '</button><div class="t"></div><span class="count" id="mcnt"></span><a class="mdl" href="' + pdfUrl + '" download="' + pdfName + '" aria-label="PDF 다운로드">' + ICON.dl + '<span>PDF</span></a></div>' +
       '<div class="stage" id="stage"><div class="slide" id="slide"><img class="pg" id="pg" alt=""></div></div>' +
       '<div class="scroll-list" id="list"></div>' +
       '<div class="bar">' +
