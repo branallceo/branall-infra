@@ -6,7 +6,7 @@
  *  - doc: 상품소개서 버튼이 열 소개서 주소 (없으면 '별도문의' 표시)
  */
 (function () {
-  var SECTION = { viral: ['바이럴 마케팅', 3], influ: ['인플루언서 마케팅', 7], contents: ['콘텐츠 제작', 12], mix: ['미디어 믹스', 16], guide: ['업무 가이드라인', 18] };
+  var SECTION = { viral: ['바이럴 마케팅', 3], influ: ['인플루언서 마케팅', 7], global: ['글로벌 마케팅', 12], contents: ['콘텐츠 제작', 15], mix: ['미디어 믹스', 19], guide: ['업무 가이드라인', 21] };
   var WORK4 = function (a, b, c, d) { return { group: '업무진행', rows: [{ sub: '리스트 전달', v: a }, { sub: '원고 & 이미지 컨펌', v: b }, { sub: '게시물 발행', v: c }, { sub: '모니터링 & 결과보고', v: d }] }; };
 
   var S = {
@@ -122,13 +122,32 @@
       notes: ['IG 기준 2주, YT 기준 4주간 모니터링이 진행됩니다.', '최소 인원은 10인 단위로만 증원 가능합니다.']
     },
     xhs: {
-      label: 'Viral Marketing', title: '샤오홍슈 마케팅', doc: 'xiaohongshu',
+      label: 'Global Marketing', title: '샤오홍슈 마케팅', small: '(중국)', doc: 'xiaohongshu',
       desc: ['F&B 매장 or 올리브영, 다이소 등 국내 방문하는 중국인(이주민, 유학생)을 타깃으로', '샤오홍슈 상에서 활성화된 인원을 모집하여 플랫폼 내 인지도 확산'],
       checks: [['게재 지면', '샤오홍슈 내 피드'], ['게재 유형', '피드 or 영상 형태로 제작']],
       cols: ['자유모집(팔로워 5만 ▽)', '팔로워 1만 이상 지정 모집'],
       rows: [{ k: '최소수량', v: ['10건', '10건'] }, { k: '비용(부가세 별도)', v: ['50만원', '100만원~'] }, { sub: '추가 수량(1건)', v: ['5만원', '10만원~'] },
         WORK4(['V', 'V'], ['V', 'V'], ['V', 'V'], ['V', 'V'])],
       notes: ['제품에 따라 진행이 제한될 수 있습니다.', '게재일로부터 30일 이내 삭제 시 A/S 가능합니다.']
+    },
+    /* 글로벌 마케팅 (2026-11 추가): 일본 · 동남아. 상품소개서(doc)는 레퍼런스가 나오면 연결 */
+    jp: {
+      label: 'Global Marketing', title: '일본 인플루언서 시딩',
+      desc: ['올리브영, 팝업 등 국내 매장을 방문하는 재한 일본인과 일본 현지 인플루언서를 모집하여', '인스타그램에서 일본 유저 대상 인지도 확산'],
+      checks: [['게재 지면', '인스타그램(일본 계정)'], ['게재 유형', '릴스 or 피드 형태로 제작']],
+      cols: ['재한 일본인 매장 방문형', '일본 현지 배송형'],
+      rows: [{ k: '최소수량', v: ['10건', '10건'] }, { k: '비용(부가세 별도)', v: ['150만원', '120만원'] }, { sub: '추가 수량(1건)', v: ['15만원', '12만원'] },
+        WORK4(['V', 'V'], ['V', 'V'], ['V', 'V'], ['V', 'V'])],
+      notes: ['제품에 따라 진행이 제한될 수 있습니다.', '일정이 촉박한 경우 비용이 달라질 수 있습니다.', '제품 발송비 · 구매비 등 실비는 별도입니다.']
+    },
+    sea: {
+      label: 'Global Marketing', title: '동남아 인플루언서 시딩',
+      desc: ['동남아 현지 인플루언서를 모집하여 인스타그램, 틱톡 등 현지 주력 플랫폼에서 브랜드 인지도를 확산합니다.', '타깃 국가와 플랫폼에 맞춰 모집 조건과 일정을 설계합니다.'],
+      checks: [['게재 지면', '인스타그램, 틱톡 등(국가별 상이)'], ['게재 유형', '릴스 · 숏폼 or 피드 형태로 제작']],
+      cols: ['현지 인플루언서 시딩'],
+      rows: [{ k: '최소수량', v: '별도문의' }, { k: '비용(부가세 별도)', v: '국가 · 플랫폼별 상이' },
+        { group: '업무진행', rows: [{ sub: '리스트 전달', v: 'V' }, { sub: '원고 & 이미지 컨펌', v: 'V' }, { sub: '게시물 발행', v: 'V' }, { sub: '모니터링 & 결과보고', v: 'V' }] }],
+      notes: ['타깃 국가, 플랫폼, 일정에 따라 비용과 최소 수량이 달라집니다.', '제품에 따라 진행이 제한될 수 있습니다.']
     },
     card: {
       label: 'Contents Production', title: 'SNS 카드뉴스 제작',
@@ -228,6 +247,7 @@
     return h + '</table>';
   }
   function half(s) { return '<section class="half">' + header(s) + table(s) + '</section>'; }
+  function wide(s) { return '<section class="half wide">' + header(s) + table(s) + '</section>'; } /* 한 쪽에 상품 1개 (가로 전체) */
   function two(n, section, a, b) { return chrome(n, section) + '<div class="halves">' + half(S[a]) + half(S[b]) + '</div>'; }
   function divider(n, title, sub) {
     return '<div class="grad"></div><div class="sl-top light">' + go(1, '브랜올 상품소개서', 'home') + '</div>' +
@@ -246,16 +266,20 @@
   function services() {
     var cols = [
       ['바이럴 마케팅', [['인스타그램(파워페이지)', 4], ['인스타그램(유머페이지)', 4], ['유튜브 쇼츠 채널', 5], ['X(트위터) 대형채널 RT', 5], ['카페 · 커뮤니티 바이럴', 6], ['언론보도 발행', 6]]],
-      ['인플루언서 마케팅', [['네이버 시딩(일반)', 8], ['네이버 시딩<small>(파블·뷰스타·인플루언서)</small>', 8], ['인스타그램(나노)', 9], ['인스타그램(마이크로·메가)', 9], ['X(트위터) 시딩', 10], ['유튜브 · 틱톡 시딩', 10], ['무가시딩 · 초청', 11], ['샤오홍슈', 11]]],
-      ['콘텐츠 제작', [['AI 비주얼 제작', 13], ['SNS 카드뉴스 제작', 13], ['바이럴 숏폼 제작', 14], ['브랜드 필름 제작', 14], ['촬영 · 편집(셀프형, 방문형)', 15]]],
-      ['미디어 믹스', [['전략 제안 및 컨설팅', 17], ['온 · 모바일 광고', 17]]],
-      ['업무 가이드라인', [['유의사항 · 부대비용', 19], ['취소 · 안내사항', 19]]]
+      ['인플루언서 마케팅', [['네이버 시딩(일반)', 8], ['네이버 시딩<small>(파블·뷰스타·인플루언서)</small>', 8], ['인스타그램(나노)', 9], ['인스타그램(마이크로·메가)', 9], ['X(트위터) 시딩', 10], ['유튜브 · 틱톡 시딩', 10], ['무가시딩 · 초청', 11]]],
+      ['글로벌 마케팅', [['샤오홍슈<small>(중국)</small>', 13], ['일본 인플루언서 시딩', 13], ['동남아 인플루언서 시딩', 14]]],
+      ['콘텐츠 제작', [['AI 비주얼 제작', 16], ['SNS 카드뉴스 제작', 16], ['바이럴 숏폼 제작', 17], ['브랜드 필름 제작', 17], ['촬영 · 편집(셀프형, 방문형)', 18]]],
+      ['미디어 믹스', [['전략 제안 및 컨설팅', 20], ['온 · 모바일 광고', 20]], ['업무 가이드라인', [['유의사항 · 부대비용', 22], ['취소 · 안내사항', 22]]]]
     ];
     var ARROW = '<svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#111"/><path d="M13.5 10l6 6-6 6" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-    return chrome(2) + '<div class="svc"><h2>전체 서비스</h2><div class="svc-cols">' + cols.map(function (c) {
-      return '<div class="svc-col"><h3>' + c[0] + '</h3>' + c[1].map(function (it) {
+    /* 한 칸에 묶음 2개까지 (c[2] = 아래에 붙는 두 번째 묶음: [제목, 항목들]) */
+    var group = function (title, items, second) {
+      return '<h3' + (second ? ' style="margin-top:44px"' : '') + '>' + title + '</h3>' + items.map(function (it) {
         return '<a class="svc-it go" data-go="' + it[1] + '" href="#' + it[1] + '"><span>' + it[0] + '</span>' + ARROW + '</a>';
-      }).join('') + '</div>';
+      }).join('');
+    };
+    return chrome(2) + '<div class="svc"><h2>전체 서비스</h2><div class="svc-cols">' + cols.map(function (c) {
+      return '<div class="svc-col">' + group(c[0], c[1]) + (c[2] ? group(c[2][0], c[2][1], true) : '') + '</div>';
     }).join('') + '</div></div>';
   }
   function aiVisual() {
@@ -291,7 +315,7 @@
     var items = [['서비스 안내', '줌 미팅 또는 대면 미팅을 통해 브랜올의 서비스를 안내드립니다.'], ['담당자 배정', '캠페인 수량과 상황에 맞게 팀 단위 담당자가 배정됩니다.'], ['비용 결제', '신규 거래처는 첫 진행 캠페인에 한해 100% 선결제로 진행됩니다.<br>(업무 순서) 견적서 컨펌 → 계산서 발행 → 대금 결제 → 담당자 배정'], ['계약 조건과 방식', '광고주 니즈에 따라 개별 계약 또는 전체 캠페인에 대한 계약이 가능합니다.']];
     var R = '<section class="half">' + header({ noPill: true, label: 'Guideline', title: '취소 · 안내사항', desc: ['업무 개시 시점 및 광고주 사정에 따른 취소 수수료 규정과', '신규 거래처 계약·결제 프로세스에 대한 안내를 제공합니다.'], checks: [] }) +
       '<div class="gd-steps">' + items.map(function (it) { return '<div class="ck">' + CHECK_ICON + '<div><b>' + it[0] + '</b><span>' + it[1] + '</span></div></div>'; }).join('') + '</div></section>';
-    return chrome(19, 'guide') + '<div class="halves">' + L + R + '</div>';
+    return chrome(22, 'guide') + '<div class="halves">' + L + R + '</div>';
   }
 
   var PAGES = [
@@ -306,14 +330,17 @@
     function () { return two(8, 'influ', 'naver', 'naverPower'); },
     function () { return two(9, 'influ', 'nano', 'micro'); },
     function () { return two(10, 'influ', 'xseed', 'yttk'); },
-    function () { return two(11, 'influ', 'free', 'xhs'); },
-    function () { return divider(12, '콘텐츠 제작', '트렌디한 비주얼로 완성하는 브랜드 스토리텔링'); },
-    function () { return chrome(13, 'contents') + '<div class="halves">' + aiVisual() + half(S.card) + '</div>'; },
-    function () { return two(14, 'contents', 'shortform', 'film'); },
-    function () { return chrome(15, 'contents') + '<div class="halves">' + shoot() + '</div>'; },
-    function () { return divider(16, '미디어 믹스', '마케팅 시너지를 극대화하는 멀티 채널 포트폴리오'); },
-    function () { return two(17, 'mix', 'strategy', 'perf'); },
-    function () { return divider(18, '업무 가이드라인', '성공적인 협업을 위한 가이드 및 운영 기준'); },
+    function () { return chrome(11, 'influ') + '<div class="halves">' + wide(S.free) + '</div>'; },
+    function () { return divider(12, '글로벌 마케팅', '국경을 넘어 현지 유저에게 닿는 크로스보더 시딩'); },
+    function () { return two(13, 'global', 'xhs', 'jp'); },
+    function () { return chrome(14, 'global') + '<div class="halves">' + wide(S.sea) + '</div>'; },
+    function () { return divider(15, '콘텐츠 제작', '트렌디한 비주얼로 완성하는 브랜드 스토리텔링'); },
+    function () { return chrome(16, 'contents') + '<div class="halves">' + aiVisual() + half(S.card) + '</div>'; },
+    function () { return two(17, 'contents', 'shortform', 'film'); },
+    function () { return chrome(18, 'contents') + '<div class="halves">' + shoot() + '</div>'; },
+    function () { return divider(19, '미디어 믹스', '마케팅 시너지를 극대화하는 멀티 채널 포트폴리오'); },
+    function () { return two(20, 'mix', 'strategy', 'perf'); },
+    function () { return divider(21, '업무 가이드라인', '성공적인 협업을 위한 가이드 및 운영 기준'); },
     guide
   ];
 
@@ -364,10 +391,11 @@
   function mServices() {
     var cols = [
       ['바이럴 마케팅', [['인스타그램(파워페이지)', 4], ['인스타그램(유머페이지)', 4], ['유튜브 쇼츠 채널', 5], ['X(트위터) 대형채널 RT', 5], ['카페 · 커뮤니티 바이럴', 6], ['언론보도 발행', 6]]],
-      ['인플루언서 마케팅', [['네이버 시딩(일반)', 8], ['네이버 시딩(파블·뷰스타·인플루언서)', 8], ['인스타그램(나노)', 9], ['인스타그램(마이크로·메가)', 9], ['X(트위터) 시딩', 10], ['유튜브 · 틱톡 시딩', 10], ['무가시딩 · 초청', 11], ['샤오홍슈', 11]]],
-      ['콘텐츠 제작', [['AI 비주얼 제작', 13], ['SNS 카드뉴스 제작', 13], ['바이럴 숏폼 제작', 14], ['브랜드 필름 제작', 14], ['촬영 · 편집(셀프형, 방문형)', 15]]],
-      ['미디어 믹스', [['전략 제안 및 컨설팅', 17], ['온 · 모바일 광고', 17]]],
-      ['업무 가이드라인', [['유의사항 · 부대비용', 19], ['취소 · 안내사항', 19]]]
+      ['인플루언서 마케팅', [['네이버 시딩(일반)', 8], ['네이버 시딩(파블·뷰스타·인플루언서)', 8], ['인스타그램(나노)', 9], ['인스타그램(마이크로·메가)', 9], ['X(트위터) 시딩', 10], ['유튜브 · 틱톡 시딩', 10], ['무가시딩 · 초청', 11]]],
+      ['글로벌 마케팅', [['샤오홍슈(중국)', 13], ['일본 인플루언서 시딩', 13], ['동남아 인플루언서 시딩', 14]]],
+      ['콘텐츠 제작', [['AI 비주얼 제작', 16], ['SNS 카드뉴스 제작', 16], ['바이럴 숏폼 제작', 17], ['브랜드 필름 제작', 17], ['촬영 · 편집(셀프형, 방문형)', 18]]],
+      ['미디어 믹스', [['전략 제안 및 컨설팅', 20], ['온 · 모바일 광고', 20]]],
+      ['업무 가이드라인', [['유의사항 · 부대비용', 22], ['취소 · 안내사항', 22]]]
     ];
     return '<div class="mcard"><div class="mlb">INDEX</div><h3>전체 서비스</h3><p class="mds">보고 싶은 서비스를 누르면 해당 페이지로 이동합니다.</p>' + cols.map(function (c) {
       return '<div class="msvc"><h4>' + c[0] + '</h4>' + c[1].map(function (it) { return '<a class="go msvc-it" data-go="' + it[1] + '" href="#' + it[1] + '">' + it[0] + '<span>›</span></a>'; }).join('') + '</div>';
@@ -413,7 +441,10 @@
     function () { return mTwo('influ', 'naver', 'naverPower'); },
     function () { return mTwo('influ', 'nano', 'micro'); },
     function () { return mTwo('influ', 'xseed', 'yttk'); },
-    function () { return mTwo('influ', 'free', 'xhs'); },
+    function () { return mSection('influ') + mProduct(S.free); },
+    function () { return mDivider('글로벌 마케팅', '국경을 넘어 현지 유저에게 닿는 크로스보더 시딩'); },
+    function () { return mTwo('global', 'xhs', 'jp'); },
+    function () { return mSection('global') + mProduct(S.sea); },
     function () { return mDivider('콘텐츠 제작', '트렌디한 비주얼로 완성하는 브랜드 스토리텔링'); },
     function () { return mSection('contents') + mAi() + mProduct(S.card); },
     function () { return mTwo('contents', 'shortform', 'film'); },
