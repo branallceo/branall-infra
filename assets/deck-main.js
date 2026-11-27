@@ -125,10 +125,11 @@
       label: 'Global Marketing', title: '샤오홍슈 마케팅', small: '(중국)', doc: 'xiaohongshu',
       desc: ['F&B 매장 or 올리브영, 다이소 등 국내 방문하는 중국인(이주민, 유학생)을 타깃으로', '샤오홍슈 상에서 활성화된 인원을 모집하여 플랫폼 내 인지도 확산'],
       checks: [['게재 지면', '샤오홍슈 내 피드'], ['게재 유형', '피드 or 영상 형태로 제작']],
-      cols: ['자유모집(팔로워 5만 ▽)', '팔로워 1만 이상 지정 모집'],
-      rows: [{ k: '최소수량', v: ['10건', '10건'] }, { k: '비용(부가세 별도)', v: ['50만원', '100만원~'] }, { sub: '추가 수량(1건)', v: ['5만원', '10만원~'] },
-        WORK4(['V', 'V'], ['V', 'V'], ['V', 'V'], ['V', 'V'])],
-      notes: ['제품에 따라 진행이 제한될 수 있습니다.', '게재일로부터 30일 이내 삭제 시 A/S 가능합니다.']
+      /* 단가는 assets/prices.js (PRICES.xhs) 에서 가져온다. 상품소개서와 같은 값. */
+      cols: (function (p) { return [p.free.name, p.pick.name, p.big.name]; })(window.PRICES.xhs),
+      rows: (function (p) { var a = [p.free, p.pick, p.big]; return [{ k: '대상 계정', v: a.map(function (x) { return x.target.replace(' 지정', '').replace('팔로워 ', '팔로워\n'); }) }, { k: '최소수량', v: a.map(function (x) { return x.min; }) }, { k: '비용(부가세 별도)', v: a.map(function (x) { return x.price; }) }, { sub: '추가 수량(1건)', v: a.map(function (x) { return x.add; }) },
+        WORK4(['V', 'V', 'V'], ['V', 'V', 'V'], ['V', 'V', 'V'], ['V', 'V', 'V'])]; })(window.PRICES.xhs),
+      notes: window.PRICES.xhs.notes
     },
     /* 글로벌 마케팅 (2026-11 추가): 일본 · 동남아. 상품소개서(doc)는 레퍼런스가 나오면 연결 */
     jp: {
